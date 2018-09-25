@@ -1,10 +1,11 @@
 <resources>
     <string name="app_name">MyCard</string>
-    <string name="aboutme_text">много много текста о том как корабли бороздят космические просторы Марса венеры и Юпитера, а еще большая куча текста о том насколько я крутой разработчик что даже не смог толком разобраться с адаптивным дизайном этой штуковины.</string>
+    <string name="aboutme_text">Много, много текста, о том, как корабли бороздят космические просторы Марса, Венеры и Юпитера. Еще большая куча текста о том. насколько я крутой разработчик, что даже не смог толком разобраться с адаптивным дизайном этой штуковины. Но я прикрутил прикольные бесплатные иконки:)</string>
     <string name="aboutme_header">Обо мне:</string>
-    <string name="hint_message">Введите Ваше сообщение</string>
+    <string name="hint_message">Введите Ваш сообщение</string>
     <string name="send"><u>Отправить</u></string>
     <string name="name">Алексей Якимов</string>
     <string name="worck">Тестировщик</string>
     <string name="no_app">Нет подходящего приложения</string>
+    <string name="disclaimer">© 2018 Alexey Yakimov</string>
 </resources>
