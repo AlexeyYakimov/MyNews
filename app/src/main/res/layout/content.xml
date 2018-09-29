@@ -1,54 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/main_background"
-    tools:context=".CardActivity">
-
-    <TextView
-        android:id="@+id/title"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/background_title"
-        android:padding="@dimen/name_padding"
-        android:text="@string/name"
-        android:textColor="@color/title"
-        android:textSize="@dimen/header" />
-
-   <FrameLayout
-       android:id="@+id/fotoFrame"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:layout_alignParentStart="true"
-       android:layout_below="@id/title">
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scaleType="centerCrop"
-        app:srcCompat="@drawable/foto" />
-   </FrameLayout>
-    <ScrollView
-        android:id="@+id/scrollView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@id/title"
-        android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/fotoFrame">
-    <LinearLayout
-        android:id="@+id/mainL"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-
         android:padding="@dimen/bio_padding">
 
         <LinearLayout
+            android:id="@+id/work_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
             android:paddingBottom="@dimen/bio_padding">
 
             <ImageView
@@ -61,44 +27,51 @@
                 android:layout_height="wrap_content"
                 android:paddingStart="@dimen/bio_padding"
                 android:text="@string/worck"
-                android:textSize="@dimen/work" />
+                android:textSize="@dimen/work_text" />
         </LinearLayout>
 
-        <ImageView
+        <view
+            android:id="@+id/top_line"
             android:layout_width="match_parent"
             android:layout_height="@dimen/line"
+            android:layout_alignBottom="@id/work_info"
             android:background="@color/line" />
 
         <TextView
+            android:id="@+id/about_me"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="textLongMessage"
+            android:layout_below="@id/top_line"
             android:paddingStart="@dimen/redstring"
             android:paddingTop="@dimen/bio_padding"
             android:text="@string/aboutme_header"
             android:textSize="@dimen/header"
-            android:textStyle="bold"
-            tools:ignore="TextViewEdits" />
+            android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/editText"
+            android:id="@+id/edit_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/about_me"
             android:paddingBottom="@dimen/bio_padding"
             android:text="@string/aboutme_text"
             android:textSize="@dimen/main_text" />
 
-        <ImageView
+        <view
+            android:id="@+id/bottom_line"
             android:layout_width="match_parent"
             android:layout_height="@dimen/line"
+            android:layout_below="@id/edit_text"
             android:background="@color/line" />
 
         <LinearLayout
+            android:id="@+id/messageLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/bottom_line"
             android:orientation="horizontal"
-            android:paddingTop="@dimen/land_text_message"
-            >
+            android:paddingTop="@dimen/port_text_message"
+            android:paddingBottom="@dimen/bio_padding">
 
             <EditText
                 android:id="@+id/textMessage"
@@ -111,19 +84,20 @@
                 android:id="@+id/sendMessage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:clickable="true"
                 android:focusable="true"
-                android:layout_gravity="center_vertical"
                 app:srcCompat="@drawable/message_text_outline" />
         </LinearLayout>
 
-
-
         <LinearLayout
+            android:id="@+id/socialMedia"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="horizontal">
+            android:layout_below="@id/messageLayout"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/bio_padding">
 
             <ImageView
                 android:id="@+id/git_click"
@@ -149,6 +123,5 @@
                 android:focusable="true"
                 app:srcCompat="@drawable/telegram" />
         </LinearLayout>
-    </LinearLayout>
-    </ScrollView>
-</RelativeLayout>
+    </RelativeLayout>
+</ScrollView>

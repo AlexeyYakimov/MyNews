@@ -2,163 +2,45 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_background"
-    tools:context=".CardActivity"
-    android:id="@+id/mainLayuot">
+    tools:context=".CardActivity">
 
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
         android:background="@color/background_title"
         android:padding="@dimen/name_padding"
         android:text="@string/name"
         android:textColor="@color/title"
-        android:textSize="@dimen/header"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"/>
+        android:textSize="@dimen/header" />
 
-<FrameLayout
-    android:id="@+id/fotoFrame"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_below="@+id/title"
-
-    >
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        app:srcCompat="@drawable/foto" />
-</FrameLayout>
-
-
-    <ScrollView
-        android:id="@+id/scrollView"
+    <FrameLayout
+        android:id="@+id/photo_frame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:scrollbars="none"
-        android:layout_below="@+id/fotoFrame"
-        android:layout_above="@id/socialMedia">
+        android:layout_below="@+id/title"
 
-        <LinearLayout
-            android:id="@+id/mainL"
+        >
+
+        <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:adjustViewBounds="true"
+            app:srcCompat="@drawable/foto" />
+    </FrameLayout>
 
-            android:padding="@dimen/bio_padding">
+        <include
+            layout="@layout/content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/photo_frame"
+            />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/bio_padding">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/bank" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="@dimen/bio_padding"
-                    android:text="@string/worck"
-                    android:textSize="@dimen/work" />
-            </LinearLayout>
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/line"
-                android:background="@color/line" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="textLongMessage"
-                android:paddingStart="@dimen/redstring"
-                android:paddingTop="@dimen/bio_padding"
-                android:text="@string/aboutme_header"
-                android:textSize="@dimen/header"
-                android:textStyle="bold"
-                tools:ignore="TextViewEdits" />
-
-            <TextView
-                android:id="@+id/editText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/bio_padding"
-                android:text="@string/aboutme_text"
-                android:textSize="@dimen/main_text" />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/line"
-                android:background="@color/line" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingTop="@dimen/port_text_message"
-                >
-
-                <EditText
-                    android:id="@+id/textMessage"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:hint="@string/hint_message" />
-
-                <ImageView
-                    android:id="@+id/sendMessage"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:layout_gravity="center_vertical"
-                    app:srcCompat="@drawable/message_text_outline" />
-            </LinearLayout>
-
-
-
-        </LinearLayout>
-    </ScrollView>
-
-    <LinearLayout
-        android:id="@+id/socialMedia"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true">
-
-        <ImageView
-            android:id="@+id/git_click"
-            android:layout_width="@dimen/icon_size"
-            android:layout_height="@dimen/icon_size"
-            android:clickable="true"
-            android:focusable="true"
-            app:srcCompat="@drawable/github_circle" />
-
-        <ImageView
-            android:id="@+id/vk_click"
-            android:layout_width="@dimen/icon_size"
-            android:layout_height="@dimen/icon_size"
-            android:clickable="true"
-            android:focusable="true"
-            app:srcCompat="@drawable/vk_circle" />
-
-        <ImageView
-            android:id="@+id/telegramm_click"
-            android:layout_width="@dimen/icon_size"
-            android:layout_height="@dimen/icon_size"
-            android:clickable="true"
-            android:focusable="true"
-            app:srcCompat="@drawable/telegram" />
-    </LinearLayout>
 </RelativeLayout>
