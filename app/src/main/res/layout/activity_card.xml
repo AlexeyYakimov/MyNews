@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_background"
-    android:orientation="vertical"
-    tools:context=".CardActivity">
+    tools:context=".CardActivity"
+    android:id="@+id/mainLayuot">
 
     <TextView
         android:id="@+id/title"
@@ -17,20 +16,34 @@
         android:padding="@dimen/name_padding"
         android:text="@string/name"
         android:textColor="@color/title"
-        android:textSize="@dimen/header" />
+        android:textSize="@dimen/header"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"/>
 
+<FrameLayout
+    android:id="@+id/fotoFrame"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/title"
+
+    >
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/photo_height"
-        android:scaleType="centerCrop"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
         app:srcCompat="@drawable/foto" />
+</FrameLayout>
 
 
     <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:scrollbars="none">
+        android:scrollbars="none"
+        android:layout_below="@+id/fotoFrame"
+        android:layout_above="@id/socialMedia">
 
         <LinearLayout
             android:id="@+id/mainL"
@@ -113,36 +126,39 @@
 
 
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/git_click"
-                android:layout_width="@dimen/icon_size"
-                android:layout_height="@dimen/icon_size"
-                android:clickable="true"
-                android:focusable="true"
-                app:srcCompat="@drawable/github_circle" />
-
-            <ImageView
-                android:id="@+id/vk_click"
-                android:layout_width="@dimen/icon_size"
-                android:layout_height="@dimen/icon_size"
-                android:clickable="true"
-                android:focusable="true"
-                app:srcCompat="@drawable/vk_circle" />
-
-            <ImageView
-                android:id="@+id/telegramm_click"
-                android:layout_width="@dimen/icon_size"
-                android:layout_height="@dimen/icon_size"
-                android:clickable="true"
-                android:focusable="true"
-                app:srcCompat="@drawable/telegram" />
-        </LinearLayout>
         </LinearLayout>
     </ScrollView>
-</LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/socialMedia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true">
+
+        <ImageView
+            android:id="@+id/git_click"
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"
+            android:clickable="true"
+            android:focusable="true"
+            app:srcCompat="@drawable/github_circle" />
+
+        <ImageView
+            android:id="@+id/vk_click"
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"
+            android:clickable="true"
+            android:focusable="true"
+            app:srcCompat="@drawable/vk_circle" />
+
+        <ImageView
+            android:id="@+id/telegramm_click"
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"
+            android:clickable="true"
+            android:focusable="true"
+            app:srcCompat="@drawable/telegram" />
+    </LinearLayout>
+</RelativeLayout>

@@ -3,13 +3,13 @@ package ru.polosatuk.mycard;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,15 +20,15 @@ public class CardActivity extends AppCompatActivity implements View.OnClickListe
     private ImageView gitClick;
     private ImageView sendMessageClick;
     private EditText textMessage;
-    private LinearLayout mainL;
-    private LinearLayout.LayoutParams layoutParams;
+    private RelativeLayout mainLayout;
+    private RelativeLayout.LayoutParams layoutParams;
 
     String linkToGit = "https://github.com/PoLoSkA";
     String linkToVK = "https://vk.com/smugas";
     String linkToTelegramm = "https://t.me/polosatuk";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card);
         init();
@@ -39,14 +39,21 @@ public class CardActivity extends AppCompatActivity implements View.OnClickListe
 
     private void disclaimer() {
         TextView tvDisclaimer = new TextView(this);
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,
+                RelativeLayout.LayoutParams.WRAP_CONTENT);
+        params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+        params.addRule(RelativeLayout.ALIGN_PARENT_END);
         tvDisclaimer.setText(getString(R.string.disclaimer));
         tvDisclaimer.setLayoutParams(layoutParams);
-        mainL.addView(tvDisclaimer);
+
+        mainLayout.addView(tvDisclaimer);
     }
 
     private void init() {
-        mainL = findViewById(R.id.mainL);
+        mainLayout = findViewById(R.id.mainLayuot);
+
         textMessage = findViewById(R.id.textMessage);
+
         gitClick = findViewById(R.id.git_click);
         vkClick = findViewById(R.id.vk_click);
         telegrammClick = findViewById(R.id.telegramm_click);
@@ -56,15 +63,13 @@ public class CardActivity extends AppCompatActivity implements View.OnClickListe
         telegrammClick.setOnClickListener(this);
         sendMessageClick.setOnClickListener(this);
 
-        layoutParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT);
-        layoutParams.gravity = Gravity.END;
+
 
 
     }
 
     @Override
-    public void onClick(View view) {
+    public void onClick(@NonNull View view) {
         switch (view.getId()) {
             case R.id.sendMessage:
                 String message = textMessage.getText().toString();
@@ -86,7 +91,7 @@ public class CardActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    private void goToBrowser(String link) {
+    private void goToBrowser(@NonNull String link) {
         Intent goToGit = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
         if (goToGit.resolveActivity(getPackageManager()) != null)
             startActivity(goToGit);
@@ -94,7 +99,7 @@ public class CardActivity extends AppCompatActivity implements View.OnClickListe
             Toast.makeText(this, R.string.no_app, Toast.LENGTH_LONG).show();
     }
 
-    private void sendSms(String message) {
+    private void sendSms(@NonNull String message) {
         String phoneNumber = "+79653811975";
         Intent smsIntent = new Intent(android.content.Intent.ACTION_VIEW);
         smsIntent.setType("vnd.android-dir/mms-sms");
@@ -103,6 +108,6 @@ public class CardActivity extends AppCompatActivity implements View.OnClickListe
         if (smsIntent.resolveActivity(getPackageManager()) != null)
             startActivity(smsIntent);
         else
-            Toast.makeText(this, R.string.no_app, Toast.LENGTH_LONG).show();
+            Snackbar.make(this, R.string.no_app, Toast.LENGTH_LONG).show();
     }
 }
