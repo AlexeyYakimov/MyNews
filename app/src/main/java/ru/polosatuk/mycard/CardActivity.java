@@ -51,7 +51,6 @@ public class CardActivity extends AppCompatActivity implements View.OnClickListe
                 ViewGroup.LayoutParams.WRAP_CONTENT); // height
         params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
         params.addRule(RelativeLayout.ALIGN_PARENT_END);
-
         return params;
     }
 
