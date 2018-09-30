@@ -16,9 +16,9 @@ import android.widget.TextView;
 
 public class CardActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private static final String LINK_TO_GIT = "https://github.com/PoLoSkA";
-    private static final String LINK_TO_VK = "https://vk.com/smugas";
-    private static final String LINK_TO_TELEGRAM = "https://t.me/polosatuk";
+    private static final String LINK_TO_GIT = "http://github.com/PoLoSkA";
+    private static final String LINK_TO_VK = "http://vk.com/smugas";
+    private static final String LINK_TO_TELEGRAM = "http://t.me/polosatuk";
 
 
     private EditText textMessage;
@@ -45,7 +45,6 @@ public class CardActivity extends AppCompatActivity implements View.OnClickListe
 
     @NonNull
     private RelativeLayout.LayoutParams getDefaultParamsRelativeLayout() {
-
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT, // width
                 ViewGroup.LayoutParams.WRAP_CONTENT); // height
@@ -58,7 +57,7 @@ public class CardActivity extends AppCompatActivity implements View.OnClickListe
 
         mainLayout = findViewById(R.id.content_main);
 
-        textMessage = findViewById(R.id.textMessage);
+        textMessage = findViewById(R.id.text_message);
 
         ImageView gitClick = findViewById(R.id.git_click);
         ImageView vkClick = findViewById(R.id.vk_click);
@@ -78,19 +77,19 @@ public class CardActivity extends AppCompatActivity implements View.OnClickListe
 
         switch (view.getId()) {
             case R.id.send_message: {
-                sendSms(view);
+                sendSms();
             }
             break;
             case R.id.git_click: {
-                goToBrowser(LINK_TO_GIT, view);
+                getOpenBrowserIntent(LINK_TO_GIT);
             }
             break;
             case R.id.vk_click: {
-                goToBrowser(LINK_TO_VK, view);
+                getOpenBrowserIntent(LINK_TO_VK);
             }
             break;
             case R.id.telegram_click: {
-                goToBrowser(LINK_TO_TELEGRAM, view);
+                getOpenBrowserIntent(LINK_TO_TELEGRAM);
             }
             break;
             default: {
@@ -101,28 +100,37 @@ public class CardActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    private void goToBrowser(@NonNull String link, @NonNull View view) {
+    private void getOpenBrowserIntent(@NonNull String link) {
 
-        Intent goToBrowser = ThirdPartyIntentUtils.getGoToBrowser(link);
+        Intent goToBrowser = ThirdPartyIntentUtils.getGoToBrowser(this, link);
         if (goToBrowser != null)
             startActivity(goToBrowser);
         else {
-            Snackbar.make(view, R.string.no_app, Snackbar.LENGTH_LONG).show();
+            showErrorSnackbar(R.string.no_app);
         }
     }
 
-    private void sendSms(@NonNull View view) {
+    private void sendSms() {
 
         String message = textMessage.getText().toString();
         if (message.trim().length() > 0) {
-            Intent smsIntent = ThirdPartyIntentUtils.getSmsIntent(message);
+            Intent smsIntent = ThirdPartyIntentUtils.getSmsIntent(this, message);
             if (smsIntent != null) {
                 startActivity(smsIntent);
             } else {
-                Snackbar.make(view, R.string.no_app, Snackbar.LENGTH_LONG).show();
+                showErrorSnackbar(R.string.no_app);
             }
         } else {
-            Snackbar.make(view, R.string.enter_app_text, Snackbar.LENGTH_LONG).show();
+            showErrorSnackbar(R.string.enter_app_text);
         }
     }
+
+    public void showErrorSnackbar(int errorMessage) {
+
+        View view = findViewById(R.id.content);
+        if (view != null) {
+            Snackbar.make(view, errorMessage, Snackbar.LENGTH_LONG).show();
+        }
+    }
+
 }

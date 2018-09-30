@@ -9,4 +9,10 @@
     <string name="no_app">Нет подходящего приложения</string>
     <string name="disclaimer">© 2018 Alexey Yakimov</string>
     <string name="enter_app_text">Введите текст сообщения</string>
+    <string name="description_photo">Photo</string>
+    <string name="button_github_c_descr">Button GitHub</string>
+    <string name="button_vk_c_descr">Button VK</string>
+    <string name="button_telegram_c_descr">Button Telegram</string>
+    <string name="picture_c_descr">Picture</string>
+    <string name="send_sms_message_c_descr">Send sms message</string>
 </resources>

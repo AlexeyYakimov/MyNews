@@ -19,23 +19,17 @@
         android:padding="@dimen/name_padding"
         android:text="@string/name"
         android:textColor="@color/title"
-        android:textSize="@dimen/header" />
+        android:textSize="@dimen/header_text" />
 
-    <FrameLayout
+    <ImageView
         android:id="@+id/photo_frame"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/title"
-
-        >
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
-            app:srcCompat="@drawable/photo" />
-    </FrameLayout>
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/description_photo"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/photo" />
 
     <include
         layout="@layout/content"
