@@ -20,32 +20,31 @@
         android:text="@string/name"
         android:textColor="@color/title"
         android:textSize="@dimen/header" />
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal"
-    android:layout_below="@+id/title"
-    >
-    <FrameLayout
-        android:id="@+id/photo_frame"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_weight="2"
-        >
 
-        <ImageView
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/title"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:id="@+id/photo_frame"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
-            app:srcCompat="@drawable/photo" />
-    </FrameLayout>
+            android:layout_weight="2">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/photo" />
+        </FrameLayout>
 
         <include
             layout="@layout/content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            />
-</LinearLayout>
+            android:layout_weight="1" />
+    </LinearLayout>
 </RelativeLayout>
