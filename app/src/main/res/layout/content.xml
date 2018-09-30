@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/content"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/content_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/bio_padding">
+
+
+        <ImageView
+            android:id="@+id/work_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:contentDescription="@string/picture_c_descr"
+            app:srcCompat="@drawable/bank" />
+
+        <TextView
+            android:id="@+id/work_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@id/work_icon"
+            android:paddingStart="@dimen/bio_padding"
+            android:paddingBottom="@dimen/bio_padding"
+            android:text="@string/work"
+            android:textSize="@dimen/work_text" />
+
+        <View
+            android:id="@+id/top_line"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line_height"
+            android:layout_alignBottom="@id/work_info"
+            android:background="@color/line" />
+
+        <TextView
+            android:id="@+id/about_me"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/top_line"
+            android:paddingStart="@dimen/start_margin_work"
+            android:paddingTop="@dimen/bio_padding"
+            android:text="@string/about_me_header"
+            android:textSize="@dimen/header_text"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/bio_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/about_me"
+            android:paddingBottom="@dimen/bio_padding"
+            android:text="@string/about_me_text"
+            android:textSize="@dimen/main_text_size" />
+
+        <View
+            android:id="@+id/bottom_line"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/line_height"
+            android:layout_below="@id/bio_info"
+            android:background="@color/line" />
+
+        <LinearLayout
+            android:id="@+id/message_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/bottom_line"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/port_text_message"
+            android:paddingBottom="@dimen/bio_padding">
+
+            <EditText
+                android:id="@+id/text_message"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:focusable="true"
+                android:hint="@string/hint_message"
+                android:inputType="text" />
+
+            <ImageButton
+                android:id="@+id/send_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="?selectableItemBackgroundBorderless"
+                android:contentDescription="@string/send_sms_message_c_descr"
+                android:focusable="true"
+                android:padding="@dimen/image_button_padding"
+                app:srcCompat="@drawable/message_text_outline" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/social_media"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/message_layout"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/bio_padding">
+
+            <ImageButton
+                android:id="@+id/git_click"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?selectableItemBackgroundBorderless"
+                android:contentDescription="@string/button_github_c_descr"
+                android:focusable="true"
+                android:padding="@dimen/image_button_padding"
+                app:srcCompat="@drawable/github_circle" />
+
+            <ImageButton
+                android:id="@+id/vk_click"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?selectableItemBackgroundBorderless"
+                android:contentDescription="@string/button_vk_c_descr"
+                android:focusable="true"
+                android:padding="@dimen/image_button_padding"
+                app:srcCompat="@drawable/vk_circle" />
+
+            <ImageButton
+                android:id="@+id/telegram_click"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?selectableItemBackgroundBorderless"
+                android:contentDescription="@string/button_telegram_c_descr"
+                android:focusable="true"
+                android:padding="@dimen/image_button_padding"
+                app:srcCompat="@drawable/telegram" />
+        </LinearLayout>
+    </RelativeLayout>
+</ScrollView>

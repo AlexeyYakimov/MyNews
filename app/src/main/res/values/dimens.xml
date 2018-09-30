@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="header">20sp</dimen>
-    <dimen name="main_text">15sp</dimen>
-    <dimen name="bio_padding">16dp</dimen>
-    <dimen name="name_padding">5dp</dimen>
+    <dimen name="header_text">18sp</dimen>
+    <dimen name="main_text_size">14sp</dimen>
+    <dimen name="bio_padding">8dp</dimen>
+    <dimen name="name_padding">8dp</dimen>
     <dimen name="icon_size">36dp</dimen>
-    <dimen name="line">2dp</dimen>
-    <dimen name="photo_height">240dp</dimen>
-    <dimen name="redstring">10dp</dimen>
-    <dimen name="land_text_message">20dp</dimen>
-    <dimen name="port_text_message">40dp</dimen>
-    <dimen name="work">17sp</dimen>
+    <dimen name="line_height">2dp</dimen>
+    <dimen name="start_margin_work">16dp</dimen>
+    <dimen name="land_text_message">24dp</dimen>
+    <dimen name="port_text_message">24dp</dimen>
+    <dimen name="work_text">16sp</dimen>
+    <dimen name="image_button_padding">4dp</dimen>
 </resources>

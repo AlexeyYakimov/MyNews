@@ -1,148 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-
+    android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_background"
-    android:orientation="vertical"
     tools:context=".CardActivity">
 
     <TextView
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
         android:background="@color/background_title"
         android:padding="@dimen/name_padding"
         android:text="@string/name"
         android:textColor="@color/title"
-        android:textSize="@dimen/header" />
-
+        android:textSize="@dimen/header_text" />
 
     <ImageView
+        android:id="@+id/photo_frame"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/photo_height"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/description_photo"
         android:scaleType="centerCrop"
-        app:srcCompat="@drawable/foto" />
+        app:srcCompat="@drawable/photo" />
 
-
-    <ScrollView
+    <include
+        layout="@layout/content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:scrollbars="none">
+        android:layout_below="@id/photo_frame" />
 
-        <LinearLayout
-            android:id="@+id/mainL"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-
-            android:padding="@dimen/bio_padding">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/bio_padding">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/bank" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="@dimen/bio_padding"
-                    android:text="@string/worck"
-                    android:textSize="@dimen/work" />
-            </LinearLayout>
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/line"
-                android:background="@color/line" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="textLongMessage"
-                android:paddingStart="@dimen/redstring"
-                android:paddingTop="@dimen/bio_padding"
-                android:text="@string/aboutme_header"
-                android:textSize="@dimen/header"
-                android:textStyle="bold"
-                tools:ignore="TextViewEdits" />
-
-            <TextView
-                android:id="@+id/editText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/bio_padding"
-                android:text="@string/aboutme_text"
-                android:textSize="@dimen/main_text" />
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/line"
-                android:background="@color/line" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingTop="@dimen/port_text_message"
-                >
-
-                <EditText
-                    android:id="@+id/textMessage"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:hint="@string/hint_message" />
-
-                <ImageView
-                    android:id="@+id/sendMessage"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:layout_gravity="center_vertical"
-                    app:srcCompat="@drawable/message_text_outline" />
-            </LinearLayout>
-
-
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/git_click"
-                android:layout_width="@dimen/icon_size"
-                android:layout_height="@dimen/icon_size"
-                android:clickable="true"
-                android:focusable="true"
-                app:srcCompat="@drawable/github_circle" />
-
-            <ImageView
-                android:id="@+id/vk_click"
-                android:layout_width="@dimen/icon_size"
-                android:layout_height="@dimen/icon_size"
-                android:clickable="true"
-                android:focusable="true"
-                app:srcCompat="@drawable/vk_circle" />
-
-            <ImageView
-                android:id="@+id/telegramm_click"
-                android:layout_width="@dimen/icon_size"
-                android:layout_height="@dimen/icon_size"
-                android:clickable="true"
-                android:focusable="true"
-                app:srcCompat="@drawable/telegram" />
-        </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+</RelativeLayout>
