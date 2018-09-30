@@ -15,9 +15,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class CardActivity extends AppCompatActivity implements View.OnClickListener {
+
     private static final String LINK_TO_GIT = "https://github.com/PoLoSkA";
     private static final String LINK_TO_VK = "https://vk.com/smugas";
     private static final String LINK_TO_TELEGRAM = "https://t.me/polosatuk";
+    private static final String PHONE_NUMBER = "+79653811975";
 
     private EditText textMessage;
     private RelativeLayout mainLayout;
@@ -27,8 +29,8 @@ public class CardActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_card);
-//        init();
-//        disclaimer();
+        init();
+        disclaimer();
 
     }
 
@@ -36,7 +38,6 @@ public class CardActivity extends AppCompatActivity implements View.OnClickListe
         TextView tvDisclaimer = new TextView(this);
 
         tvDisclaimer.setText(getString(R.string.disclaimer));
-
         tvDisclaimer.setLayoutParams(getDefaultParamsRelativeLayout());
 
         mainLayout.addView(tvDisclaimer);
@@ -44,6 +45,7 @@ public class CardActivity extends AppCompatActivity implements View.OnClickListe
 
     @NonNull
     private RelativeLayout.LayoutParams getDefaultParamsRelativeLayout() {
+
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT, // width
                 ViewGroup.LayoutParams.WRAP_CONTENT); // height
@@ -54,14 +56,16 @@ public class CardActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void init() {
-        mainLayout = findViewById(R.id.main_layout);
+
+        mainLayout = findViewById(R.id.content_main);
 
         textMessage = findViewById(R.id.textMessage);
 
         ImageView gitClick = findViewById(R.id.git_click);
         ImageView vkClick = findViewById(R.id.vk_click);
-        ImageView telegramClick = findViewById(R.id.telegramm_click);
+        ImageView telegramClick = findViewById(R.id.telegram_click);
         ImageView sendMessageClick = findViewById(R.id.sendMessage);
+
         gitClick.setOnClickListener(this);
         vkClick.setOnClickListener(this);
         telegramClick.setOnClickListener(this);
@@ -72,11 +76,15 @@ public class CardActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(@NonNull View view) {
+
         switch (view.getId()) {
             case R.id.sendMessage:
                 String message = textMessage.getText().toString();
                 if (message.trim().length() > 0) {
                     sendSms(message, view);
+                }
+                else {
+                    Snackbar.make(view, R.string.enter_app_text, Snackbar.LENGTH_LONG).show();
                 }
                 break;
             case R.id.git_click:
@@ -85,15 +93,17 @@ public class CardActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.vk_click:
                 goToBrowser(LINK_TO_VK, view);
                 break;
-            case R.id.telegramm_click:
+            case R.id.telegram_click:
                 goToBrowser(LINK_TO_TELEGRAM, view);
                 break;
-
+            default:
+                break;
         }
 
     }
 
     private void goToBrowser(@NonNull String link, View view) {
+
         Intent goToGit = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
         if (goToGit.resolveActivity(getPackageManager()) != null)
             startActivity(goToGit);
@@ -103,15 +113,15 @@ public class CardActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void sendSms(@NonNull String message, View view) {
-        String phoneNumber = "+79653811975";
+
         Intent smsIntent = new Intent(android.content.Intent.ACTION_VIEW);
         smsIntent.setType("vnd.android-dir/mms-sms");
-        smsIntent.putExtra("address", phoneNumber);
+        smsIntent.putExtra("address", PHONE_NUMBER);
         smsIntent.putExtra("sms_body", message);
 
-        if (smsIntent.resolveActivity(getPackageManager()) != null)
+        if (smsIntent.resolveActivity(getPackageManager()) != null) {
             startActivity(smsIntent);
-        else {
+        } else {
             Snackbar.make(view, R.string.no_app, Snackbar.LENGTH_LONG).show();
         }
     }

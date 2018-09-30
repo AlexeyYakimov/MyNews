@@ -1,36 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <RelativeLayout
+        android:id="@+id/content_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/bio_padding">
 
-        <LinearLayout
-            android:id="@+id/work_info"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:paddingBottom="@dimen/bio_padding">
+
 
             <ImageView
+                android:id="@+id/work_icon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/bank" />
+                app:srcCompat="@drawable/bank"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"/>
 
             <TextView
+                android:id="@+id/work_info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingStart="@dimen/bio_padding"
-                android:text="@string/worck"
-                android:textSize="@dimen/work_text" />
-        </LinearLayout>
+                android:text="@string/work"
+                android:textSize="@dimen/work_text"
+                android:layout_toEndOf="@id/work_icon"
+                android:layout_alignParentTop="true"
+                android:paddingBottom="@dimen/bio_padding"/>
 
-        <view
+        <View
             android:id="@+id/top_line"
             android:layout_width="match_parent"
             android:layout_height="@dimen/line"
@@ -44,7 +45,7 @@
             android:layout_below="@id/top_line"
             android:paddingStart="@dimen/redstring"
             android:paddingTop="@dimen/bio_padding"
-            android:text="@string/aboutme_header"
+            android:text="@string/about_me_header"
             android:textSize="@dimen/header"
             android:textStyle="bold" />
 
@@ -54,10 +55,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/about_me"
             android:paddingBottom="@dimen/bio_padding"
-            android:text="@string/aboutme_text"
+            android:text="@string/about_me_text"
             android:textSize="@dimen/main_text" />
 
-        <view
+        <View
             android:id="@+id/bottom_line"
             android:layout_width="match_parent"
             android:layout_height="@dimen/line"
@@ -78,12 +79,13 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:focusable="true"
                 android:hint="@string/hint_message" />
 
             <ImageView
                 android:id="@+id/sendMessage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/icon_size"
+                android:layout_height="@dimen/icon_size"
                 android:layout_gravity="center_vertical"
                 android:clickable="true"
                 android:focusable="true"
@@ -96,6 +98,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/messageLayout"
             android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
             android:orientation="horizontal"
             android:paddingBottom="@dimen/bio_padding">
 
@@ -116,7 +119,7 @@
                 app:srcCompat="@drawable/vk_circle" />
 
             <ImageView
-                android:id="@+id/telegramm_click"
+                android:id="@+id/telegram_click"
                 android:layout_width="@dimen/icon_size"
                 android:layout_height="@dimen/icon_size"
                 android:clickable="true"
