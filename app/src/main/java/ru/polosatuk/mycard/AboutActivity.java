@@ -14,7 +14,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-public class CardActivity extends AppCompatActivity implements View.OnClickListener {
+public class AboutActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String LINK_TO_GIT = "http://github.com/PoLoSkA";
     private static final String LINK_TO_VK = "http://vk.com/smugas";
@@ -31,7 +31,6 @@ public class CardActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_card);
         init();
         disclaimer();
-
     }
 
     private void disclaimer() {

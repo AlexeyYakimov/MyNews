@@ -15,4 +15,6 @@
     <string name="button_telegram_c_descr">Button Telegram</string>
     <string name="picture_c_descr">Picture</string>
     <string name="send_sms_message_c_descr">Send sms message</string>
+    <string name="news_title_text">Новости</string>
+    <string name="about">About</string>
 </resources>

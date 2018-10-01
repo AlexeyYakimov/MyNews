@@ -93,7 +93,7 @@
                 android:contentDescription="@string/send_sms_message_c_descr"
                 android:focusable="true"
                 android:padding="@dimen/image_button_padding"
-                app:srcCompat="@drawable/message_text_outline" />
+                app:srcCompat="@drawable/message_text" />
         </LinearLayout>
 
         <LinearLayout
