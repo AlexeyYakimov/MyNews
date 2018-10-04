@@ -8,7 +8,7 @@
     android:background="@color/main_background"
     tools:context=".AboutActivity">
 
-    <android.support.v7.widget.Toolbar
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/title_tool_bar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
@@ -17,29 +17,22 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"
         app:title="@string/name"
-        app:titleTextColor="@color/title"
-        />
+        app:titleTextColor="@color/title" />
 
-    <LinearLayout
+    <ImageView
+        android:id="@+id/photo_frame"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/title_tool_bar"
-        android:orientation="horizontal">
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/description_photo"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/photo" />
 
-        <ImageView
-            android:id="@+id/photo_frame"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:adjustViewBounds="true"
-            android:contentDescription="@string/description_photo"
-            android:scaleType="centerCrop"
-            app:srcCompat="@drawable/photo" />
+    <include
+        layout="@layout/content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/photo_frame" />
 
-        <include
-            layout="@layout/content"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2" />
-    </LinearLayout>
 </RelativeLayout>

@@ -11,4 +11,7 @@
     <dimen name="port_text_message">24dp</dimen>
     <dimen name="work_text">16sp</dimen>
     <dimen name="image_button_padding">4dp</dimen>
+    <dimen name="padding_4dp">4dp</dimen>
+    <dimen name="padding_8dp">8dp</dimen>
+    <dimen name="news_preview_image_size">100dp</dimen>
 </resources>

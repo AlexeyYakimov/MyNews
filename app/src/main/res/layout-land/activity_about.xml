@@ -7,7 +7,8 @@
     android:layout_height="match_parent"
     android:background="@color/main_background"
     tools:context=".AboutActivity">
-    <android.support.v7.widget.Toolbar
+
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/title_tool_bar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
@@ -19,20 +20,26 @@
         app:titleTextColor="@color/title"
         />
 
-    <ImageView
-        android:id="@+id/photo_frame"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@+id/title_tool_bar"
-        android:adjustViewBounds="true"
-        android:contentDescription="@string/description_photo"
-        android:scaleType="centerCrop"
-        app:srcCompat="@drawable/photo" />
+        android:orientation="horizontal">
 
-    <include
-        layout="@layout/content"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/photo_frame" />
+        <ImageView
+            android:id="@+id/photo_frame"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/description_photo"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/photo" />
 
+        <include
+            layout="@layout/content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2" />
+    </LinearLayout>
 </RelativeLayout>

@@ -9,10 +9,10 @@ import java.util.List;
 public class DataUtils {
 
     public static List<NewsItem> generateNews() {
-        final Category darwinAwards = new Category(1, "Darwin Awards");
-        final Category criminal = new Category(2, "Criminal");
-        final Category animals = new Category(3, "Animals");
-        final Category music = new Category(4, "Music");
+        final NewsItem.NewsCategory darwinAwards = new NewsItem.NewsCategory(1, "Darwin Awards");
+        final NewsItem.NewsCategory criminal = new NewsItem.NewsCategory(2, "Criminal");
+        final NewsItem.NewsCategory animals = new NewsItem.NewsCategory(3, "Animals");
+        final NewsItem.NewsCategory music = new NewsItem.NewsCategory(4, "Music");
 
         List<NewsItem> news = new ArrayList<>();
         news.add(new NewsItem(
@@ -115,6 +115,26 @@ public class DataUtils {
         ));
         news.add(new NewsItem(
                 "Wet Wet Wet announce Liberty X star Kevin Simm as new frontman",
+                "https://e3.365dm.com/18/09/2048x1152/skynews-wet-wet-wet-kevin-simm_4433314.jpg",
+                music,
+                createDate(2018, 9, 17, 12, 45),
+                "The Voice 2016 winner says he was \"really taken aback\" by the opportunity after singing the band's songs "
+                        + "early in his career.",
+                "The Scottish band, who are best-known for their 1994 cover of The Troggs' 1960s hit Love Is All Around, "
+                        + "revealed the change in line-up on Tuesday.\n\n"
+                        + "Simm, 38, who won The Voice in 2016, will take over singing duties after founding member Marti Pellow "
+                        + "left the band last year.\n\n"
+                        + "Simm, from Lancashire, first shot to fame on ITV talent show Popstars in 2001 after forming the group "
+                        + "Liberty X with four other runner-up contestants.\n\n"
+                        + "He has recalled singing Wet Wet Wet's songs early in his career.He said: \"I was really taken aback, the"
+                        + " opportunity to join a band with such amazing songs and great guys and a great fanbase really "
+                        + "excites me.\n\n"
+                        + "\"When I first started gigging around the pubs and clubs up North, two songs that were always in my set "
+                        + "were Goodnight Girl and Love Is All Around.\""
+        ));
+
+        news.add(new NewsItem(
+                "Bla Bla  Bla announce Liberty X star Kevin Simm as new frontman",
                 "https://e3.365dm.com/18/09/2048x1152/skynews-wet-wet-wet-kevin-simm_4433314.jpg",
                 music,
                 createDate(2018, 9, 17, 12, 45),
