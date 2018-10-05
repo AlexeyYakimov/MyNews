@@ -17,7 +17,7 @@ import ru.polosatuk.mycard.news.data.DataUtils;
 public class NewsViewActivity extends AppCompatActivity {
 
     private final NewsViewAdapter.onItemClickListener clickListener = newsItem ->
-        startActivity(ThirdPartyIntentUtils.setFullNewsToExtra(this, newsItem.newsToJson(newsItem)));
+            startActivity(ThirdPartyIntentUtils.setFullNewsToExtra(this, newsItem.newsToJson(newsItem)));
 
 
     @Override
