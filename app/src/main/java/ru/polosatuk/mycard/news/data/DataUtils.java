@@ -8,6 +8,8 @@ import java.util.List;
 
 public class DataUtils {
 
+    private DataUtils(){}
+
     public static List<NewsItem> generateNews() {
         final NewsItem.NewsCategory darwinAwards = new NewsItem.NewsCategory(1, "Darwin Awards");
         final NewsItem.NewsCategory criminal = new NewsItem.NewsCategory(2, "Criminal");

@@ -10,9 +10,9 @@ public class ThirdPartyIntentUtils {
     private static final String PHONE_NUMBER = "+79653811975";
     private static final String SMS_TYPE = "smsto:";
     private static final String SMS_BODY_EXTRA = "sms_body";
+    public static final String NEWS_KEY_EXTRA = "news_details_key_extra";
 
-    private ThirdPartyIntentUtils() {
-    }
+    private ThirdPartyIntentUtils() {}
 
     public static Intent getSmsIntent(@NonNull Context context,
                                       @NonNull String message) {
@@ -20,21 +20,28 @@ public class ThirdPartyIntentUtils {
         Uri smsInfo = Uri.parse(SMS_TYPE + PHONE_NUMBER);
         Intent intent = new Intent(Intent.ACTION_VIEW, smsInfo);
         intent.putExtra(SMS_BODY_EXTRA, message);
-        if (intent.resolveActivity(context.getPackageManager()) != null)
-            return intent;
-        else {
-            return null;
-        }
+        return checkIntent(intent, context);
     }
 
     public static Intent getGoToBrowser(@NonNull Context context,
                                         @NonNull String link) {
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
-        if (intent.resolveActivity(context.getPackageManager()) != null) {
+        return checkIntent(intent, context);
+    }
+
+    public static Intent setFullNewsToExtra(@NonNull Context context,
+                                            @NonNull String content){
+        Intent intent = new Intent(context, NewsDetailsActivity.class);
+        intent.putExtra(NEWS_KEY_EXTRA, content);
+        return checkIntent(intent, context);
+    }
+
+    // мне просто лень это писать снова:)
+    private static Intent checkIntent(@NonNull Intent intent, Context context){
+        if (intent.resolveActivity(context.getPackageManager()) != null)
             return intent;
-        } else {
+        else
             return null;
-        }
     }
 
 }

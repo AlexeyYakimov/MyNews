@@ -16,11 +16,9 @@ import ru.polosatuk.mycard.news.data.DataUtils;
 
 public class NewsViewActivity extends AppCompatActivity {
 
-    private final NewsViewAdapter.onItemClickListener clickListener = newsItem -> {
-        Intent fullNews = new Intent(this, FullNewsActivity.class);
-        fullNews.putExtra("title_value", newsItem.newsToJson(newsItem));
-        startActivity(fullNews);
-    };
+    private final NewsViewAdapter.onItemClickListener clickListener = newsItem ->
+        startActivity(ThirdPartyIntentUtils.setFullNewsToExtra(this, newsItem.newsToJson(newsItem)));
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,15 +29,13 @@ public class NewsViewActivity extends AppCompatActivity {
 
         RecyclerView recyclerView = findViewById(R.id.recycler_view_news);
         recyclerView.setAdapter(new NewsViewAdapter(this, DataUtils.generateNews(), clickListener));
-        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
+
+        if (screenOrientationPortrait()) {
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
             recyclerView.setLayoutManager(linearLayoutManager);
-        }
-        else if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE){
+        } else {
             GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
             recyclerView.setLayoutManager(gridLayoutManager);
-        } else {
-            Log.d("Tag", "Я так не играю, что за ориенация");
         }
 
     }
@@ -62,12 +58,14 @@ public class NewsViewActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private String getScreenOrientation(){
-        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
-            return "Портретная ориентация";
-        else if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
-            return "Альбомная ориентация";
-        else
-            return "";
+    private Boolean screenOrientationPortrait() {
+        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
+            return true;
+        else if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            return false;
+        } else {
+            Log.d("Tag", "Я так не играю, что за ориенация");
+            return true;
+        }
     }
 }

@@ -11,7 +11,6 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.request.RequestOptions;
 
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -90,7 +89,7 @@ public class NewsViewAdapter extends RecyclerView.Adapter<NewsViewAdapter.ViewHo
             category.setText(newsItem.getNewsCategory().getName());
             title.setText(newsItem.getTitle());
             previewText.setText(newsItem.getPreviewText());
-            date.setText(new SimpleDateFormat("EEEE, dd MMM hh:mm a").format(newsItem.getPublishDate()));
+            date.setText(SupportUtils.getSimpleDate(newsItem.getPublishDate()));
             imageLoader.load(newsItem.getImageUrl()).into(imageNews);
         }
 

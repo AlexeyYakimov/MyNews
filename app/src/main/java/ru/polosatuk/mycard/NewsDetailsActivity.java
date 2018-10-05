@@ -11,37 +11,34 @@ import com.bumptech.glide.request.RequestOptions;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import java.text.SimpleDateFormat;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import ru.polosatuk.mycard.news.data.NewsItem;
 
-public class FullNewsActivity extends AppCompatActivity {
-
-    private RequestManager imageLoader;
+public class NewsDetailsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_full_news);
+        setContentView(R.layout.activity_news_details);
 
         Toolbar myToolbar = (Toolbar) findViewById(R.id.title_tool_bar);
         setSupportActionBar(myToolbar);
-        Intent fullNews = getIntent();
 
+        Intent fullNews = getIntent();
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
 
-        NewsItem news = gson.fromJson(fullNews.getStringExtra("title_value"), NewsItem.class);
+        NewsItem news = gson.fromJson(fullNews.getStringExtra(ThirdPartyIntentUtils.NEWS_KEY_EXTRA), NewsItem.class);
 
-        TextView tvTitle = findViewById(R.id.full_news_title);
-        TextView tvFullNews = findViewById(R.id.full_news_full_text);
-        ImageView tvImageView = findViewById(R.id.full_news_image);
-        TextView tvDate = findViewById(R.id.full_news_date);
+        TextView tvTitle = findViewById(R.id.news_details_title);
+        TextView tvFullNews = findViewById(R.id.news_details_full_text);
+        ImageView tvImageView = findViewById(R.id.news_details_image);
+        TextView tvDate = findViewById(R.id.news_details_date);
+
         tvTitle.setText(news.getTitle());
         tvFullNews.setText(news.getFullText());
-        tvDate.setText(new SimpleDateFormat("EEEE, dd MMM hh:mm a").format(news.getPublishDate()));
+        tvDate.setText(SupportUtils.getSimpleDate(news.getPublishDate()));
         myToolbar.setTitle(news.getNewsCategory().getName());
 
 
@@ -49,7 +46,7 @@ public class FullNewsActivity extends AppCompatActivity {
                 .placeholder(R.drawable.place_holder)
                 .fallback(R.drawable.place_holder)
                 .centerCrop();
-        imageLoader = Glide.with(this).applyDefaultRequestOptions(imageOption);
+        RequestManager imageLoader = Glide.with(this).applyDefaultRequestOptions(imageOption);
 
         imageLoader.load(news.getImageUrl()).into(tvImageView);
     }
