@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">My News</string>
+    <string name="about_me_text">Много, много текста, о том, как корабли бороздят космические просторы Марса, Венеры и Юпитера. Еще большая куча текста о том. насколько я крутой разработчик, что даже не смог толком разобраться с адаптивным дизайном этой штуковины. Но я прикрутил прикольные бесплатные иконки:)</string>
+    <string name="about_me_header">Обо мне:</string>
+    <string name="hint_message">Введите Ваш сообщение</string>
+    <string name="send"><u>Отправить</u></string>
+    <string name="name">Алексей Якимов</string>
+    <string name="work">Тестировщик</string>
+    <string name="no_app">Нет подходящего приложения</string>
+    <string name="disclaimer">© 2018 Алексей Якимов</string>
+    <string name="enter_app_text">Введите текст сообщения</string>
+    <string name="description_photo">Фото</string>
+    <string name="button_github_c_descr">Кнопка Гитхаб</string>
+    <string name="button_vk_c_descr">Кнопка ВK</string>
+    <string name="button_telegram_c_descr">Кнопка телеграмм</string>
+    <string name="picture_c_descr">Картинка</string>
+    <string name="send_sms_message_c_descr">Отправить сообщение</string>
+    <string name="news_title_text">Новости</string>
+    <string name="about">Обо мне</string>
+    <string name="loading_place_holder">Загрузка...</string>
+    <string name="date_view_pattern_hr_ago">ч. назад</string>
+    <string name="yesterday_date_view_pattern">Вчера</string>
+</resources>
