@@ -16,9 +16,7 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"
         app:title="@string/loading_place_holder"
-        app:titleTextColor="@color/title">
-
-    </androidx.appcompat.widget.Toolbar>
+        app:titleTextColor="@color/title" />
 
     <ScrollView
         android:layout_width="match_parent"

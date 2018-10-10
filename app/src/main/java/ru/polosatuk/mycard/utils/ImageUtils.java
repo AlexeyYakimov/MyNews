@@ -1,0 +1,24 @@
+package ru.polosatuk.mycard.utils;
+
+import android.content.Context;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestManager;
+import com.bumptech.glide.request.RequestOptions;
+
+import androidx.annotation.NonNull;
+import ru.polosatuk.mycard.R;
+
+public class ImageUtils {
+    private ImageUtils(){
+        throw new IllegalAccessError("No exist");
+    }
+    @NonNull
+    public static RequestManager getImageOption(@NonNull Context context) {
+        RequestOptions imageOption = new RequestOptions()
+                .placeholder(R.drawable.place_holder)
+                .fallback(R.drawable.place_holder)
+                .centerCrop();
+        return Glide.with(context).applyDefaultRequestOptions(imageOption);
+    }
+}

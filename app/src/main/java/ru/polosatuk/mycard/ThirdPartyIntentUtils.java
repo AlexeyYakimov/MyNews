@@ -10,9 +10,10 @@ public class ThirdPartyIntentUtils {
     private static final String PHONE_NUMBER = "+79653811975";
     private static final String SMS_TYPE = "smsto:";
     private static final String SMS_BODY_EXTRA = "sms_body";
-    public static final String NEWS_KEY_EXTRA = "news_details_key_extra";
+
 
     private ThirdPartyIntentUtils() {
+        throw new IllegalAccessError("No instance");
     }
 
     public static Intent getSmsIntent(@NonNull Context context,
@@ -30,19 +31,14 @@ public class ThirdPartyIntentUtils {
         return checkIntent(intent, context);
     }
 
-    public static Intent setFullNewsToExtra(@NonNull Context context,
-                                            @NonNull String content) {
-        Intent intent = new Intent(context, NewsDetailsActivity.class);
-        intent.putExtra(NEWS_KEY_EXTRA, content);
-        return checkIntent(intent, context);
-    }
 
-    // мне просто лень это писать снова:)
+    @NonNull
     private static Intent checkIntent(@NonNull Intent intent, Context context) {
         if (intent.resolveActivity(context.getPackageManager()) != null)
             return intent;
         else
             return null;
     }
+
 
 }

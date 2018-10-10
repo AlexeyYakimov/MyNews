@@ -1,10 +1,5 @@
 package ru.polosatuk.mycard.news.data;
 
-import android.util.Log;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
 import java.util.Date;
 
 import androidx.annotation.NonNull;
@@ -27,56 +22,37 @@ public class NewsItem {
         this.fullText = fullText;
     }
 
+    @NonNull
     public String getTitle() {
         return title;
     }
 
+    @NonNull
     public String getImageUrl() {
         return imageUrl;
     }
 
+    @NonNull
     public NewsCategory getNewsCategory() {
         return newsCategory;
     }
 
+    @NonNull
     public Date getPublishDate() {
         return publishDate;
 
     }
 
+    @NonNull
     public String getPreviewText() {
         return previewText;
     }
 
+    @NonNull
     public String getFullText() {
         return fullText;
     }
 
-    public static class NewsCategory {
-        private final int id;
-        private final String name;
-
-        public NewsCategory(int id, String name) {
-            this.id = id;
-            this.name = name;
-        }
-
-        public int getId() {
-            return id;
-        }
-
-        public String getName() {
-            return name;
-        }
-    }
-
-    @NonNull
-    public String newsToJson(NewsItem newsItem) {
-        GsonBuilder builder = new GsonBuilder();
-        Gson gson = builder.create();
-        Log.d("Tag", gson.toJson(newsItem));
-        return gson.toJson(newsItem);
-    }
 
 
 }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/news_card_cardview"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
+    android:layout_height="310dp"
     app:cardCornerRadius="@dimen/padding_8dp"
     app:contentPadding="@dimen/padding_8dp">
 
@@ -16,8 +16,8 @@
             android:id="@+id/news_card_category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/news_card_image"
             android:layout_alignParentStart="true"
-            android:layout_toStartOf="@id/news_card_image"
             android:paddingEnd="@dimen/padding_4dp"
             android:paddingBottom="@dimen/padding_4dp"
             android:text="@string/loading_place_holder"
@@ -30,7 +30,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/news_card_category"
             android:layout_alignParentStart="true"
-            android:layout_toStartOf="@id/news_card_image"
             android:ellipsize="end"
             android:lines="2"
             android:paddingEnd="@dimen/padding_4dp"
@@ -43,9 +42,9 @@
             android:id="@+id/news_card_text_preview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_above="@id/news_card_date"
             android:layout_below="@id/news_card_title"
             android:layout_alignParentStart="true"
-            android:layout_toLeftOf="@id/news_card_image"
             android:ellipsize="end"
             android:lines="3"
             android:paddingEnd="@dimen/padding_4dp"
@@ -59,16 +58,14 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentBottom="true"
-            android:layout_toLeftOf="@id/news_card_image"
             android:text="@string/loading_place_holder" />
 
         <ImageView
             android:id="@+id/news_card_image"
-            android:layout_width="@dimen/news_preview_image_size"
-            android:layout_height="@dimen/news_preview_image_size"
-            android:layout_above="@id/news_card_date"
-            android:layout_alignParentEnd="true"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
             android:scaleType="centerCrop"
+
             tools:src="@tools:sample/avatars" />
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

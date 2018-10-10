@@ -1,5 +1,6 @@
 package ru.polosatuk.mycard;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -127,12 +128,19 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
+    @NonNull
     public void showErrorSnackbar(int errorMessage) {
 
         View view = findViewById(R.id.content);
         if (view != null) {
             Snackbar.make(view, errorMessage, Snackbar.LENGTH_LONG).show();
         }
+    }
+
+    @NonNull
+    public static Intent getActivityAboutIntent(Context context) {
+        Intent intent = new Intent(context, AboutActivity.class);
+        return intent;
     }
 
 }
