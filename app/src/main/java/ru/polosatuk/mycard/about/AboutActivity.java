@@ -1,4 +1,4 @@
-package ru.polosatuk.mycard;
+package ru.polosatuk.mycard.about;
 
 import android.content.Context;
 import android.content.Intent;
@@ -16,12 +16,17 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import ru.polosatuk.mycard.R;
+import ru.polosatuk.mycard.about.utils.ThirdPartyIntentUtils;
 
 
 public class AboutActivity extends AppCompatActivity implements View.OnClickListener {
 
+    @NonNull
     private static final String LINK_TO_GIT = "http://github.com/PoLoSkA";
+    @NonNull
     private static final String LINK_TO_VK = "http://vk.com/smugas";
+    @NonNull
     private static final String LINK_TO_TELEGRAM = "http://t.me/polosatuk";
 
 
@@ -83,18 +88,22 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
                 sendSms();
             }
             break;
+
             case R.id.git_click: {
                 getOpenBrowserIntent(LINK_TO_GIT);
             }
             break;
+
             case R.id.vk_click: {
                 getOpenBrowserIntent(LINK_TO_VK);
             }
             break;
+
             case R.id.telegram_click: {
                 getOpenBrowserIntent(LINK_TO_TELEGRAM);
             }
             break;
+
             default: {
                 Log.d("MainActivity", "click on unknown view");
             }
@@ -139,8 +148,7 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
 
     @NonNull
     public static Intent getActivityAboutIntent(Context context) {
-        Intent intent = new Intent(context, AboutActivity.class);
-        return intent;
+        return new Intent(context, AboutActivity.class);
     }
 
 }

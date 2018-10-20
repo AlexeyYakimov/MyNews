@@ -18,6 +18,6 @@
     <string name="news_title_text">News</string>
     <string name="about">About:</string>
     <string name="loading_place_holder">Loading...</string>
-    <string name="date_view_pattern_hr_ago">hr. ago</string>
-    <string name="yesterday_date_view_pattern">yesterday</string>
+    <string name="date_view_pattern_hr_ago">%1$s hr. ago %2$s</string>
+    <string name="yesterday_date_view_pattern">yesterday %1$s</string>
 </resources>

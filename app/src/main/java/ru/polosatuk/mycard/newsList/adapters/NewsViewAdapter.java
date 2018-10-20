@@ -1,6 +1,7 @@
-package ru.polosatuk.mycard;
+package ru.polosatuk.mycard.newsList.adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,25 +14,29 @@ import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import ru.polosatuk.mycard.news.data.NewsItem;
-import ru.polosatuk.mycard.utils.DateUtils;
+import ru.polosatuk.mycard.R;
+import ru.polosatuk.mycard.newsList.models.NewsDisplayableModel;
 import ru.polosatuk.mycard.utils.ImageUtils;
+
+import static ru.polosatuk.mycard.newsList.models.NewsCategory.ANIMALS;
+import static ru.polosatuk.mycard.newsList.models.NewsCategory.CRIMINAL;
+import static ru.polosatuk.mycard.newsList.models.NewsCategory.DARVIN_AWARDS;
+import static ru.polosatuk.mycard.newsList.models.NewsCategory.MUSIC;
 
 public class NewsViewAdapter extends RecyclerView.Adapter<NewsViewAdapter.ViewHolder> {
     @NonNull
-    Context context;
-    @NonNull
-    private final List<NewsItem> newsItems;
+    private final List<NewsDisplayableModel> newsItems;
     @NonNull
     private final RequestManager imageLoader;
     @NonNull
     private final OnItemClickListener listener;
+    @NonNull
+    private LayoutInflater inflater;
 
     public NewsViewAdapter(@NonNull Context context,
-                           @NonNull List<NewsItem> newsItems,
+                           @NonNull List<NewsDisplayableModel> newsItems,
                            @NonNull OnItemClickListener listener
     ) {
-        this.context = context;
         this.imageLoader = ImageUtils.getImageOption(context);
         this.newsItems = newsItems;
         this.listener = listener;
@@ -40,12 +45,14 @@ public class NewsViewAdapter extends RecyclerView.Adapter<NewsViewAdapter.ViewHo
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, @NonNull int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        if (viewType == 4) {
-            return new ViewHolder(inflater.inflate(R.layout.news_card_music, parent, false), listener);
+        int layoutId;
+        inflater = LayoutInflater.from(parent.getContext());
+        if (viewType == MUSIC.getId()) {
+            layoutId = R.layout.news_card_music;
         } else {
-            return new ViewHolder(inflater.inflate(R.layout.news_card, parent, false), listener);
+            layoutId = R.layout.news_card;
         }
+        return new ViewHolder(inflater.inflate(layoutId, parent, false), listener);
     }
 
     @Override
@@ -56,7 +63,27 @@ public class NewsViewAdapter extends RecyclerView.Adapter<NewsViewAdapter.ViewHo
     @Override
     @NonNull
     public int getItemViewType(int position) {
-        return newsItems.get(position).getNewsCategory().getId();
+        switch (newsItems.get(position).getNewsCategoryId()) {
+            case 4: {
+                return MUSIC.getId();
+            }
+            case 2:{
+                return ANIMALS.getId();
+            }
+
+            case 1:{
+                return CRIMINAL.getId();
+            }
+
+            case 3:{
+                return DARVIN_AWARDS.getId();
+            }
+
+            default:{
+                Log.d("NewsViewAdapter", "No activity to add");
+                return 1;
+            }
+        }
     }
 
     @Override
@@ -95,11 +122,11 @@ public class NewsViewAdapter extends RecyclerView.Adapter<NewsViewAdapter.ViewHo
 
         }
 
-        private void bind(@NonNull NewsItem newsItem) {
-            category.setText(newsItem.getNewsCategory().getName());
-            title.setText(newsItem.getTitle());
+        private void bind(@NonNull NewsDisplayableModel newsItem) {
+            category.setText(newsItem.getNewsCategoryName());
+            title.setText(newsItem.getPreviewText());
             previewText.setText(newsItem.getPreviewText());
-            date.setText(DateUtils.getDateToNews(newsItem.getPublishDate(), itemView.getContext()));
+            date.setText(newsItem.getPublishDate());
             imageLoader.load(newsItem.getImageUrl()).into(imageNews);
         }
 
@@ -107,6 +134,6 @@ public class NewsViewAdapter extends RecyclerView.Adapter<NewsViewAdapter.ViewHo
     }
 
     public interface OnItemClickListener {
-        void onItemClick(NewsItem newsItem);
+        void onItemClick(NewsDisplayableModel newsItem);
     }
 }

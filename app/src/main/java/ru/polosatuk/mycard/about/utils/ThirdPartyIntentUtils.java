@@ -1,12 +1,14 @@
-package ru.polosatuk.mycard;
+package ru.polosatuk.mycard.about.utils;
 
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 public class ThirdPartyIntentUtils {
+
     private static final String PHONE_NUMBER = "+79653811975";
     private static final String SMS_TYPE = "smsto:";
     private static final String SMS_BODY_EXTRA = "sms_body";
@@ -32,12 +34,13 @@ public class ThirdPartyIntentUtils {
     }
 
 
-    @NonNull
+    @Nullable
     private static Intent checkIntent(@NonNull Intent intent, Context context) {
-        if (intent.resolveActivity(context.getPackageManager()) != null)
+        if (intent.resolveActivity(context.getPackageManager()) != null) {
             return intent;
-        else
+        }else{
             return null;
+        }
     }
 
 
