@@ -38,7 +38,7 @@ public class ThirdPartyIntentUtils {
     private static Intent checkIntent(@NonNull Intent intent, Context context) {
         if (intent.resolveActivity(context.getPackageManager()) != null) {
             return intent;
-        }else{
+        } else {
             return null;
         }
     }

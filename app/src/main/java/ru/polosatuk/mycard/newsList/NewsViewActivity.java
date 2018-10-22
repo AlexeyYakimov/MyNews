@@ -26,9 +26,10 @@ import ru.polosatuk.mycard.about.AboutActivity;
 import ru.polosatuk.mycard.newsList.adapters.NewsViewAdapter;
 import ru.polosatuk.mycard.newsList.converter.NewsConverter;
 import ru.polosatuk.mycard.newsList.data.DataUtils;
+import ru.polosatuk.mycard.newsList.decorator.NewsItemDecorator;
 import ru.polosatuk.mycard.newsList.models.NewsDisplayableModel;
 
-public class NewsViewActivity extends AppCompatActivity  {
+public class NewsViewActivity extends AppCompatActivity {
 
     private static final int SCREEN_WIDTH_DP = 600;
     private static final int LARGE_SCREEN_WIDTH_DP = 1000;
@@ -42,7 +43,7 @@ public class NewsViewActivity extends AppCompatActivity  {
         setSupportActionBar(myToolbar);
 
         RecyclerView recyclerView = findViewById(R.id.recycler_view_news);
-       initRecyclerView(recyclerView, this);
+        initRecyclerView(recyclerView, this);
 
     }
 
@@ -68,46 +69,34 @@ public class NewsViewActivity extends AppCompatActivity  {
         return super.onOptionsItemSelected(item);
     }
 
-    private void initRecyclerView(@NonNull RecyclerView recyclerView, Context context){
-        NewsConverter newsI = new NewsConverter(App.getAppContext());
+    private void initRecyclerView(@NonNull RecyclerView recyclerView, @NonNull Context context) {
         List<NewsDisplayableModel> uiModels = NewsConverter.convert(DataUtils.generateNews());
-        recyclerView.setAdapter(new NewsViewAdapter(context, uiModels, newsItem ->
-                context.startActivity(NewsDetailsActivity.setFullNewsToExtra( context, NewsConverter.newsToJson(newsItem)))));
-        setItemDecoration(recyclerView, context);
         setLayoutManager(recyclerView, context);
+        recyclerView.setAdapter(new NewsViewAdapter(context, uiModels, newsItem ->
+                context.startActivity(NewsDetailsActivity.setFullNewsToExtra(context, NewsConverter.newsToJson(newsItem)))));
+        recyclerView.addItemDecoration(new NewsItemDecorator(getResources().getDimensionPixelSize(R.dimen.padding_4dp)));
     }
 
 
-    private  void setItemDecoration(@NonNull RecyclerView recyclerView, Context context) {
-        DividerItemDecoration decoration
-                = new DividerItemDecoration(context, DividerItemDecoration.VERTICAL);
-
-        Drawable dividerDrawable = ContextCompat.getDrawable(context, R.drawable.divider);
-        decoration.setDrawable(dividerDrawable);
-
-        recyclerView.addItemDecoration(decoration);
-    }
-
-    private  void setLayoutManager(RecyclerView recyclerView, Context context) {
+    private void setLayoutManager(@NonNull RecyclerView recyclerView, @NonNull Context context) {
 
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(spanCount(displayMetrics), StaggeredGridLayoutManager.VERTICAL));
     }
 
-    private  int spanCount(DisplayMetrics displayMetrics) {
+    private int spanCount(DisplayMetrics displayMetrics) {
 
         float screenWidthInDp = displayMetrics.widthPixels / displayMetrics.density;
-        int spanCount = 1;
+        int spanCount;
         if (screenWidthInDp < SCREEN_WIDTH_DP) {
-            return spanCount = 1;
+            spanCount = 1;
         } else if (screenWidthInDp > SCREEN_WIDTH_DP && screenWidthInDp < LARGE_SCREEN_WIDTH_DP) {
-            return spanCount = 2;
+            spanCount = 2;
         } else {
-            return spanCount = 3;
+            spanCount = 3;
         }
+        return spanCount;
     }
-
-
 
 
 }

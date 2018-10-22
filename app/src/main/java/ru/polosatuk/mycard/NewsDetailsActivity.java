@@ -16,8 +16,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import ru.polosatuk.mycard.newsList.converter.NewsConverter;
 import ru.polosatuk.mycard.newsList.models.NewsDisplayableModel;
-import ru.polosatuk.mycard.newsList.models.NewsItem;
-import ru.polosatuk.mycard.utils.DateUtils;
 import ru.polosatuk.mycard.utils.ImageUtils;
 
 
@@ -25,7 +23,7 @@ public class NewsDetailsActivity extends AppCompatActivity {
 
     public static final String NEWS_KEY_EXTRA = "news_details_key_extra";
 
-   private NewsDisplayableModel news;
+    private NewsDisplayableModel news;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,11 +37,10 @@ public class NewsDetailsActivity extends AppCompatActivity {
 
         String json = getIntent().getStringExtra(NEWS_KEY_EXTRA);
         try {
-            news = NewsConverter.getNewsDetailFromGson(json);
-        } catch (NullPointerException e){
-            e.printStackTrace();
+            news = NewsConverter.fromJson(json);
+        } catch (NullPointerException e) {
             Toast.makeText(this, "No news", Toast.LENGTH_LONG).show();
-            Log.d("NewsDetailsActivity", "Exception from json");
+            Log.d("NewsDetailsActivity", "Exception from json", e);
         }
 
 
@@ -55,9 +52,9 @@ public class NewsDetailsActivity extends AppCompatActivity {
         tvTitle.setText(news.getTitle());
         tvFullNews.setText(news.getFullText());
         tvDate.setText(news.getPublishDate());
-        myToolbar.setTitle(news.getNewsCategoryName());
+        myToolbar.setTitle(news.getNewsCategory().getName());
 
-        RequestManager imageLoader = ImageUtils.getImageOption(this);
+        RequestManager imageLoader = ImageUtils.getRequestManager(this);
 
         imageLoader.load(news.getImageUrl()).into(tvImageView);
     }
@@ -66,8 +63,9 @@ public class NewsDetailsActivity extends AppCompatActivity {
     public static Intent setFullNewsToExtra(@NonNull Context context, @NonNull String content) {
         Intent intent = new Intent(context, NewsDetailsActivity.class);
         intent.putExtra(NEWS_KEY_EXTRA, content);
-            return intent;
+        return intent;
     }
+
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();

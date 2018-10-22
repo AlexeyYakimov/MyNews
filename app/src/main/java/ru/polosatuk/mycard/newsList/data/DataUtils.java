@@ -19,6 +19,7 @@ public class DataUtils {
     private DataUtils() {
         throw new IllegalAccessError("No instance");
     }
+
     @NonNull
     public static List<NewsItem> generateNews() {
 
@@ -27,7 +28,7 @@ public class DataUtils {
                 "Tourist filmed sitting on 5m-long crocodile",
                 "https://e3.365dm.com/18/09/736x414/skynews-crocodile-australia_4433218.jpg",
                 NewsCategory.DARVIN_AWARDS,
-               DateUtils.createDate(2018, localDate.get(Calendar.MONTH), localDate.get(Calendar.DAY_OF_MONTH), localDate.get(Calendar.HOUR_OF_DAY)-5, 34),
+                DateUtils.createDate(2018, localDate.get(Calendar.MONTH), localDate.get(Calendar.DAY_OF_MONTH), localDate.get(Calendar.HOUR_OF_DAY) - 5, 34),
                 "\"It was dangerous, I know. It is a scary feeling sitting on something that could kill you in a fraction of a "
                         + "second,\" he says.",
                 "A Danish tourist has admitted he took his life in his hands by sitting on a large crocodile in Australia.\n\n"
@@ -46,7 +47,7 @@ public class DataUtils {
                 "Police warn daredevil cliff jumpers who are 'risking their lives for likes'",
                 "https://e3.365dm.com/18/09/2048x1152/skynews-cliff-jumping-greg-milam_4433647.jpg",
                 NewsCategory.CRIMINAL,
-               DateUtils.createDate(2018, localDate.get(Calendar.MONTH), localDate.get(Calendar.DAY_OF_MONTH)-1,12, 45),
+                DateUtils.createDate(2018, localDate.get(Calendar.MONTH), localDate.get(Calendar.DAY_OF_MONTH) - 1, 12, 45),
                 "Police in Los Angeles say they are spending hundreds of thousands of dollars airlifting cliff jumpers out of "
                         + "dangerous spots.",
                 "Daredevils attempting dangerous cliff dives in a quest for likes has led to an increase in costly helicopter "
@@ -125,7 +126,7 @@ public class DataUtils {
                 "Wet Wet Wet announce Liberty X star Kevin Simm as new frontman",
                 "https://e3.365dm.com/18/09/2048x1152/skynews-wet-wet-wet-kevin-simm_4433314.jpg",
                 NewsCategory.MUSIC,
-               DateUtils.createDate(2018, 9, 17, 12, 45),
+                DateUtils.createDate(2018, 9, 17, 12, 45),
                 "The Voice 2016 winner says he was \"really taken aback\" by the opportunity after singing the band's songs "
                         + "early in his career.",
                 "The Scottish band, who are best-known for their 1994 cover of The Troggs' 1960s hit Love Is All Around, "

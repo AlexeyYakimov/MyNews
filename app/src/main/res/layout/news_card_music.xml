@@ -64,7 +64,7 @@
             android:id="@+id/news_card_image"
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:scaleType="centerCrop"
+            android:contentDescription="TODO" android:scaleType="centerCrop"
 
             tools:src="@tools:sample/avatars" />
     </RelativeLayout>

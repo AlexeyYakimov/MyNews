@@ -10,11 +10,12 @@ import androidx.annotation.NonNull;
 import ru.polosatuk.mycard.R;
 
 public class ImageUtils {
-    private ImageUtils(){
+    private ImageUtils() {
         throw new IllegalAccessError("No exist");
     }
+
     @NonNull
-    public static RequestManager getImageOption(@NonNull Context context) {
+    public static RequestManager getRequestManager(@NonNull Context context) {
         RequestOptions imageOption = new RequestOptions()
                 .placeholder(R.drawable.place_holder)
                 .fallback(R.drawable.place_holder)

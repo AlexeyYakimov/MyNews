@@ -18,11 +18,6 @@ import ru.polosatuk.mycard.R;
 import ru.polosatuk.mycard.newsList.models.NewsDisplayableModel;
 import ru.polosatuk.mycard.utils.ImageUtils;
 
-import static ru.polosatuk.mycard.newsList.models.NewsCategory.ANIMALS;
-import static ru.polosatuk.mycard.newsList.models.NewsCategory.CRIMINAL;
-import static ru.polosatuk.mycard.newsList.models.NewsCategory.DARVIN_AWARDS;
-import static ru.polosatuk.mycard.newsList.models.NewsCategory.MUSIC;
-
 public class NewsViewAdapter extends RecyclerView.Adapter<NewsViewAdapter.ViewHolder> {
     @NonNull
     private final List<NewsDisplayableModel> newsItems;
@@ -37,22 +32,16 @@ public class NewsViewAdapter extends RecyclerView.Adapter<NewsViewAdapter.ViewHo
                            @NonNull List<NewsDisplayableModel> newsItems,
                            @NonNull OnItemClickListener listener
     ) {
-        this.imageLoader = ImageUtils.getImageOption(context);
+        this.imageLoader = ImageUtils.getRequestManager(context);
         this.newsItems = newsItems;
         this.listener = listener;
+        this.inflater = LayoutInflater.from(context);
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, @NonNull int viewType) {
-        int layoutId;
-        inflater = LayoutInflater.from(parent.getContext());
-        if (viewType == MUSIC.getId()) {
-            layoutId = R.layout.news_card_music;
-        } else {
-            layoutId = R.layout.news_card;
-        }
-        return new ViewHolder(inflater.inflate(layoutId, parent, false), listener);
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new ViewHolder(inflater.inflate(viewType, parent, false), listener);
     }
 
     @Override
@@ -61,33 +50,25 @@ public class NewsViewAdapter extends RecyclerView.Adapter<NewsViewAdapter.ViewHo
     }
 
     @Override
-    @NonNull
     public int getItemViewType(int position) {
-        switch (newsItems.get(position).getNewsCategoryId()) {
-            case 4: {
-                return MUSIC.getId();
+        switch (newsItems.get(position).getNewsCategory()) {
+            case MUSIC: {
+                return R.layout.news_card_music;
             }
-            case 2:{
-                return ANIMALS.getId();
-            }
-
-            case 1:{
-                return CRIMINAL.getId();
+            case ANIMALS:
+            case DARVIN_AWARDS:
+            case CRIMINAL: {
+                return R.layout.news_card;
             }
 
-            case 3:{
-                return DARVIN_AWARDS.getId();
-            }
-
-            default:{
+            default: {
                 Log.d("NewsViewAdapter", "No activity to add");
-                return 1;
+                return R.layout.news_card;
             }
         }
     }
 
     @Override
-    @NonNull
     public int getItemCount() {
         return newsItems.size();
     }
@@ -110,7 +91,7 @@ public class NewsViewAdapter extends RecyclerView.Adapter<NewsViewAdapter.ViewHo
             super(itemView);
             itemView.setOnClickListener(view -> {
                 int position = getAdapterPosition();
-                if (listener != null && position != RecyclerView.NO_POSITION) {
+                if (position != RecyclerView.NO_POSITION) {
                     listener.onItemClick(newsItems.get(position));
                 }
             });
@@ -123,7 +104,7 @@ public class NewsViewAdapter extends RecyclerView.Adapter<NewsViewAdapter.ViewHo
         }
 
         private void bind(@NonNull NewsDisplayableModel newsItem) {
-            category.setText(newsItem.getNewsCategoryName());
+            category.setText(newsItem.getNewsCategory().getName());
             title.setText(newsItem.getPreviewText());
             previewText.setText(newsItem.getPreviewText());
             date.setText(newsItem.getPublishDate());

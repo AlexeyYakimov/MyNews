@@ -49,7 +49,9 @@ public class NewsItem {
     }
 
     @NonNull
-    public Date getPublishDate() {return publishDate; }
+    public Date getPublishDate() {
+        return publishDate;
+    }
 
     @NonNull
     public String getPreviewText() {

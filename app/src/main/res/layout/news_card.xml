@@ -67,7 +67,7 @@
             android:layout_height="@dimen/news_preview_image_size"
             android:layout_above="@id/news_card_date"
             android:layout_alignParentEnd="true"
-            android:scaleType="centerCrop"
+            android:contentDescription="TODO" android:scaleType="centerCrop"
             tools:src="@tools:sample/avatars" />
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

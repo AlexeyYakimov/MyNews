@@ -1,6 +1,5 @@
 package ru.polosatuk.mycard.newsList.converter;
 
-import android.content.Context;
 import android.util.Log;
 
 import com.google.gson.Gson;
@@ -15,20 +14,17 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import ru.polosatuk.mycard.App;
-import ru.polosatuk.mycard.newsList.data.DataUtils;
 import ru.polosatuk.mycard.newsList.models.NewsDisplayableModel;
 import ru.polosatuk.mycard.newsList.models.NewsItem;
 import ru.polosatuk.mycard.utils.DateUtils;
 
 public class NewsConverter {
-   private static Context context;
     @NonNull
     private static GsonBuilder builder = new GsonBuilder();
     @NonNull
     private static Gson gson = builder.create();
 
-    public NewsConverter(Context appContext){
-        NewsConverter.context = appContext;
+    private NewsConverter() {
     }
 
     @NonNull
@@ -38,7 +34,7 @@ public class NewsConverter {
     }
 
     @Nullable
-    public static NewsDisplayableModel getNewsDetailFromGson(@NonNull String json) {
+    public static NewsDisplayableModel fromJson(@NonNull String json) {
         try {
             return gson.fromJson(json, NewsDisplayableModel.class);
         } catch (JsonSyntaxException e) {
@@ -51,21 +47,21 @@ public class NewsConverter {
     }
 
     @NonNull
-    public static String getNewsDate(Date date) {
-        return DateUtils.getDateToNews(date, context);
+    private static String getNewsDate(Date date) {
+        return DateUtils.formatDateTime(App.getAppContext(), date).toString();
     }
+
 
     public static List<NewsDisplayableModel> convert(List<NewsItem> newsItem) {
         List<NewsDisplayableModel> displayableModels = new ArrayList<>();
-        for (int i = 0; i< newsItem.size(); i++){
+        for (NewsItem item : newsItem) {
 
-        displayableModels.add(new NewsDisplayableModel(newsItem.get(i).getTitle(),
-                newsItem.get(i).getImageUrl(),
-                newsItem.get(i).getNewsCategory().getName(),
-                newsItem.get(i).getNewsCategory().getId(),
-                getNewsDate(newsItem.get(i).getPublishDate()),
-                newsItem.get(i).getPreviewText(),
-                newsItem.get(i).getFullText()));
+            displayableModels.add(new NewsDisplayableModel(item.getTitle(),
+                    item.getImageUrl(),
+                    item.getNewsCategory(),
+                    getNewsDate(item.getPublishDate()),
+                    item.getPreviewText(),
+                    item.getFullText()));
         }
 
         return displayableModels;
