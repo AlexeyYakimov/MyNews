@@ -1,18 +1,23 @@
 <resources>
-    <string name="app_name">MyCard</string>
-    <string name="about_me_text">Много, много текста, о том, как корабли бороздят космические просторы Марса, Венеры и Юпитера. Еще большая куча текста о том. насколько я крутой разработчик, что даже не смог толком разобраться с адаптивным дизайном этой штуковины. Но я прикрутил прикольные бесплатные иконки:)</string>
-    <string name="about_me_header">Обо мне:</string>
-    <string name="hint_message">Введите Ваш сообщение</string>
-    <string name="send"><u>Отправить</u></string>
-    <string name="name">Алексей Якимов</string>
-    <string name="work">Тестировщик</string>
-    <string name="no_app">Нет подходящего приложения</string>
+    <string name="app_name">My News</string>
+    <string name="about_me_text">Lot of text about my self. My English is bad, but i must write this text in english. I think i learn this languedge and i can finish this app and have Softwear Engeneer work. Thanks for reading.</string>
+    <string name="about_me_header">About:</string>
+    <string name="hint_message">Enter you message</string>
+    <string name="send"><u>Send</u></string>
+    <string name="name">Alexey Yakimov</string>
+    <string name="work">QA</string>
+    <string name="no_app">No app for open link</string>
     <string name="disclaimer">© 2018 Alexey Yakimov</string>
-    <string name="enter_app_text">Введите текст сообщения</string>
+    <string name="enter_app_text">Enter text message</string>
     <string name="description_photo">Photo</string>
     <string name="button_github_c_descr">Button GitHub</string>
     <string name="button_vk_c_descr">Button VK</string>
     <string name="button_telegram_c_descr">Button Telegram</string>
     <string name="picture_c_descr">Picture</string>
     <string name="send_sms_message_c_descr">Send sms message</string>
+    <string name="news_title_text">News</string>
+    <string name="about">About:</string>
+    <string name="loading_place_holder">Loading...</string>
+    <string name="date_view_pattern_hr_ago">%1$s hr. ago %2$s</string>
+    <string name="yesterday_date_view_pattern">yesterday %1$s</string>
 </resources>

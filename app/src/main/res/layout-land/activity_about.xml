@@ -6,25 +6,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_background"
-    tools:context=".CardActivity">
+    tools:context=".about.AboutActivity">
 
-    <TextView
-        android:id="@+id/title"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/title_tool_bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
+        android:layout_height="?attr/actionBarSize"
         android:background="@color/background_title"
-        android:padding="@dimen/name_padding"
-        android:text="@string/name"
-        android:textColor="@color/title"
-        android:textSize="@dimen/header_text" />
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"
+        app:title="@string/name"
+        app:titleTextColor="@color/title" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/title"
+        android:layout_below="@+id/title_tool_bar"
         android:orientation="horizontal">
 
         <ImageView

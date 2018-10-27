@@ -1,11 +1,8 @@
-package ru.polosatuk.mycard;
+package ru.polosatuk.mycard.about;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,10 +11,22 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-public class CardActivity extends AppCompatActivity implements View.OnClickListener {
+import com.google.android.material.snackbar.Snackbar;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import ru.polosatuk.mycard.R;
+import ru.polosatuk.mycard.about.utils.ThirdPartyIntentUtils;
+
+
+public class AboutActivity extends AppCompatActivity implements View.OnClickListener {
+
+    @NonNull
     private static final String LINK_TO_GIT = "http://github.com/PoLoSkA";
+    @NonNull
     private static final String LINK_TO_VK = "http://vk.com/smugas";
+    @NonNull
     private static final String LINK_TO_TELEGRAM = "http://t.me/polosatuk";
 
 
@@ -28,10 +37,9 @@ public class CardActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_card);
+        setContentView(R.layout.activity_about);
         init();
         disclaimer();
-
     }
 
     private void disclaimer() {
@@ -80,18 +88,22 @@ public class CardActivity extends AppCompatActivity implements View.OnClickListe
                 sendSms();
             }
             break;
+
             case R.id.git_click: {
                 getOpenBrowserIntent(LINK_TO_GIT);
             }
             break;
+
             case R.id.vk_click: {
                 getOpenBrowserIntent(LINK_TO_VK);
             }
             break;
+
             case R.id.telegram_click: {
                 getOpenBrowserIntent(LINK_TO_TELEGRAM);
             }
             break;
+
             default: {
                 Log.d("MainActivity", "click on unknown view");
             }
@@ -125,12 +137,18 @@ public class CardActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    @NonNull
     public void showErrorSnackbar(int errorMessage) {
 
         View view = findViewById(R.id.content);
         if (view != null) {
             Snackbar.make(view, errorMessage, Snackbar.LENGTH_LONG).show();
         }
+    }
+
+    @NonNull
+    public static Intent getActivityAboutIntent(Context context) {
+        return new Intent(context, AboutActivity.class);
     }
 
 }
