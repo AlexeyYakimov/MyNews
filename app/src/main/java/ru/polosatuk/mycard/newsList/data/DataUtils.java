@@ -23,6 +23,11 @@ public class DataUtils {
     @NonNull
     public static List<NewsItem> generateNews() {
 
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         List<NewsItem> news = new ArrayList<>();
         news.add(new NewsItem(
                 "Tourist filmed sitting on 5m-long crocodile",
