@@ -1,5 +1,8 @@
 package ru.polosatuk.mycard.newsList.data;
 
+import android.accounts.NetworkErrorException;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -26,6 +29,11 @@ public class DataUtils {
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        try {
+            throw new NetworkErrorException("Text");
+        } catch (NetworkErrorException e) {
             e.printStackTrace();
         }
         List<NewsItem> news = new ArrayList<>();

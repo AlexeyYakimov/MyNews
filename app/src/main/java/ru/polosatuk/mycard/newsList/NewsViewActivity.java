@@ -17,7 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
-import io.reactivex.Observable;
+import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
@@ -50,7 +50,7 @@ public class NewsViewActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        progressBar.setVisibility(ProgressBar.INVISIBLE);
+        progressBar.setVisibility(ProgressBar.GONE);
         if (disposable != null && !disposable.isDisposed()) {
             disposable.dispose();
             disposable = null;
@@ -60,6 +60,8 @@ public class NewsViewActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        disposable.dispose();
+        disposable = null;
         adapter = null;
         progressBar = null;
         recyclerView = null;
@@ -114,18 +116,23 @@ public class NewsViewActivity extends AppCompatActivity {
 
     private void loadNews() {
         progressBar.setVisibility(ProgressBar.VISIBLE);
-        disposable = Observable.fromCallable(DataUtils::generateNews).
-                subscribeOn(Schedulers.io()).
+        disposable = Single.fromCallable(DataUtils::generateNews).
                 map(NewsConverter::convert).
+                subscribeOn(Schedulers.io()).
                 observeOn(AndroidSchedulers.mainThread()).
-                subscribe(this::updateItems);
+                subscribe(this::updateItems,
+                        this::errorHandle);
+    }
+
+    private void errorHandle(Throwable th){
+        Log.d(NewsViewActivity.class.getSimpleName(), th.getMessage(), th);
     }
 
     private void updateItems(List<NewsDisplayableModel> newsDisplayableModelList) {
         if (adapter != null) {
             adapter.replaceItems(newsDisplayableModelList);
         }
-        progressBar.setVisibility(ProgressBar.INVISIBLE);
+        progressBar.setVisibility(ProgressBar.GONE);
 
     }
 
