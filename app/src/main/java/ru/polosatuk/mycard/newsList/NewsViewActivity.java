@@ -7,65 +7,46 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ProgressBar;
+
+import com.arellomobile.mvp.MvpAppCompatActivity;
+import com.arellomobile.mvp.presenter.InjectPresenter;
+import com.bumptech.glide.util.Util;
 
 import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
-import io.reactivex.Single;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
 import ru.polosatuk.mycard.NewsDetailsActivity;
 import ru.polosatuk.mycard.R;
 import ru.polosatuk.mycard.about.AboutActivity;
-import ru.polosatuk.mycard.newsList.adapters.NewsViewAdapter;
-import ru.polosatuk.mycard.newsList.converter.NewsConverter;
-import ru.polosatuk.mycard.newsList.data.DataUtils;
-import ru.polosatuk.mycard.newsList.decorator.NewsItemDecorator;
 import ru.polosatuk.mycard.newsList.models.NewsDisplayableModel;
+import ru.polosatuk.mycard.newsList.models.NewsItem;
+import ru.polosatuk.mycard.utils.Utils;
 
-public class NewsViewActivity extends AppCompatActivity {
+public class NewsViewActivity extends MvpAppCompatActivity implements NewsView {
 
     private static final int SCREEN_WIDTH_DP = 600;
     private static final int LARGE_SCREEN_WIDTH_DP = 1000;
+    @NonNull
     private ProgressBar progressBar;
+    @NonNull
     private NewsViewAdapter adapter;
-    private Disposable disposable;
+    @NonNull
     private RecyclerView recyclerView;
+    @NonNull
+    private Button errorBtn;
+    @NonNull
+    private View errorView;
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        loadNews();
+    @InjectPresenter
+    NewsViewPresenter newsViewPresenter;
 
-
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        progressBar.setVisibility(ProgressBar.GONE);
-        if (disposable != null && !disposable.isDisposed()) {
-            disposable.dispose();
-            disposable = null;
-        }
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        disposable.dispose();
-        disposable = null;
-        adapter = null;
-        progressBar = null;
-        recyclerView = null;
-    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -74,12 +55,18 @@ public class NewsViewActivity extends AppCompatActivity {
 
         progressBar = findViewById(R.id.progressBar);
 
+        errorBtn = findViewById(R.id.error_content_btn_retry);
+        errorBtn.setOnClickListener(onClick ->{
+            newsViewPresenter.onRetryBtnClick();
+        });
+        errorView = findViewById(R.id.error_content);
 
         Toolbar myToolbar = findViewById(R.id.title_tool_bar);
         setSupportActionBar(myToolbar);
 
          recyclerView = findViewById(R.id.recycler_view_news);
         initRecyclerView(recyclerView, this);
+
 
     }
 
@@ -108,34 +95,12 @@ public class NewsViewActivity extends AppCompatActivity {
     private void initRecyclerView(@NonNull RecyclerView recyclerView, @NonNull Context context) {
 
         setLayoutManager(recyclerView, context);
-        adapter = new NewsViewAdapter(this, newsItem -> NewsDetailsActivity.start(context, newsItem));
+        adapter = new NewsViewAdapter(this, newsItem -> showNewsDetail(this, newsItem)
+                );
         recyclerView.setAdapter(adapter);
 
         recyclerView.addItemDecoration(new NewsItemDecorator(getResources().getDimensionPixelSize(R.dimen.padding_4dp)));
     }
-
-    private void loadNews() {
-        progressBar.setVisibility(ProgressBar.VISIBLE);
-        disposable = Single.fromCallable(DataUtils::generateNews).
-                map(NewsConverter::convert).
-                subscribeOn(Schedulers.io()).
-                observeOn(AndroidSchedulers.mainThread()).
-                subscribe(this::updateItems,
-                        this::errorHandle);
-    }
-
-    private void errorHandle(Throwable th){
-        Log.d(NewsViewActivity.class.getSimpleName(), th.getMessage(), th);
-    }
-
-    private void updateItems(List<NewsDisplayableModel> newsDisplayableModelList) {
-        if (adapter != null) {
-            adapter.replaceItems(newsDisplayableModelList);
-        }
-        progressBar.setVisibility(ProgressBar.GONE);
-
-    }
-
 
     private void setLayoutManager(@NonNull RecyclerView recyclerView, @NonNull Context context) {
 
@@ -155,5 +120,31 @@ public class NewsViewActivity extends AppCompatActivity {
             spanCount = 3;
         }
         return spanCount;
+    }
+
+    @Override
+    public void showItems(List<NewsDisplayableModel> list) {
+        if (adapter != null) {
+            adapter.replaceItems(list);
+        }
+        progressBar.setVisibility(ProgressBar.GONE);
+    }
+
+    @Override
+    public void showError(Throwable th) {
+        Utils.setVisible(errorView, true);
+        Log.d(NewsViewActivity.class.getSimpleName(), th.getMessage(), th);
+    }
+
+    @Override
+    public void showProgressBar(boolean visability) {
+        Utils.setVisible(progressBar, visability);
+        Utils.setVisible(recyclerView,!visability);
+        Utils.setVisible(errorView, false);
+    }
+
+    @Override
+    public void showNewsDetail(Context context, NewsDisplayableModel newsItem) {
+        NewsDetailsActivity.start(context, newsItem);
     }
 }

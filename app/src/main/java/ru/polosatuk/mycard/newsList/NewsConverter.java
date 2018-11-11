@@ -1,4 +1,4 @@
-package ru.polosatuk.mycard.newsList.converter;
+package ru.polosatuk.mycard.newsList;
 
 import android.util.Log;
 
@@ -16,7 +16,7 @@ import androidx.annotation.Nullable;
 import ru.polosatuk.mycard.App;
 import ru.polosatuk.mycard.newsList.models.NewsDisplayableModel;
 import ru.polosatuk.mycard.newsList.models.NewsItem;
-import ru.polosatuk.mycard.utils.DateUtils;
+import ru.polosatuk.mycard.utils.Utils;
 
 public class NewsConverter {
     @NonNull
@@ -48,7 +48,7 @@ public class NewsConverter {
 
     @NonNull
     private static String getNewsDate(Date date) {
-        return DateUtils.formatDateTime(App.getAppContext(), date).toString();
+        return Utils.formatDateTime(App.getAppContext(), date).toString();
     }
 
 

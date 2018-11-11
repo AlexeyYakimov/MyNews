@@ -1,4 +1,4 @@
-package ru.polosatuk.mycard.newsList.decorator;
+package ru.polosatuk.mycard.newsList;
 
 import android.graphics.Rect;
 import android.view.View;

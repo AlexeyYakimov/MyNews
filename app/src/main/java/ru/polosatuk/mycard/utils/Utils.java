@@ -2,19 +2,21 @@ package ru.polosatuk.mycard.utils;
 
 
 import android.content.Context;
+import android.view.View;
 
 import java.util.Date;
 import java.util.GregorianCalendar;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import static android.text.format.DateUtils.DAY_IN_MILLIS;
 import static android.text.format.DateUtils.FORMAT_ABBREV_RELATIVE;
 import static android.text.format.DateUtils.HOUR_IN_MILLIS;
 
-public class DateUtils {
+public class Utils {
 
-    private DateUtils() {
+    private Utils() {
         throw new IllegalAccessError("No instance");
     }
 
@@ -31,6 +33,13 @@ public class DateUtils {
     @NonNull
     public static Date createDate(int year, int month, int date, int hrs, int min) {
         return new GregorianCalendar(year, month, date, hrs, min).getTime();
+    }
+
+    public static void setVisible(@Nullable View view, boolean show) {
+        if (view == null) return;
+
+        int visibility = show ? View.VISIBLE : View.GONE;
+        view.setVisibility(visibility);
     }
 
 
