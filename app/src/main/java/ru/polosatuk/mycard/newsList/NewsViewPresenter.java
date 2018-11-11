@@ -8,7 +8,8 @@ import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
-import ru.polosatuk.mycard.utils.Utils;
+import ru.polosatuk.mycard.NewsDetailsActivity;
+import ru.polosatuk.mycard.newsList.models.NewsDisplayableModel;
 
 @InjectViewState
 public class NewsViewPresenter extends MvpPresenter<NewsView> {
@@ -36,11 +37,12 @@ public class NewsViewPresenter extends MvpPresenter<NewsView> {
                 observeOn(AndroidSchedulers.mainThread()).
                 subscribe(newsRequest -> getViewState().showItems(newsRequest),
                         throwable -> getViewState().showError(throwable)));
-        getViewState().showProgressBar(false);
     }
 
     public void onRetryBtnClick(){
         startLoading();
     }
 
+    public void onItemClick(NewsDisplayableModel item){
+       getViewState().showNewsDetails(item);}
 }

@@ -21,5 +21,5 @@ public interface NewsView extends MvpView {
     @StateStrategyType(SingleStateStrategy.class)
     void showProgressBar(boolean visability);
     @StateStrategyType(SingleStateStrategy.class)
-    void showNewsDetail(Context context, NewsDisplayableModel item);
+    void showNewsDetails(NewsDisplayableModel item);
 }

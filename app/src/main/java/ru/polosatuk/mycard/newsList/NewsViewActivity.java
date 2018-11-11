@@ -13,7 +13,6 @@ import android.widget.ProgressBar;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
-import com.bumptech.glide.util.Util;
 
 import java.util.List;
 
@@ -26,13 +25,14 @@ import ru.polosatuk.mycard.NewsDetailsActivity;
 import ru.polosatuk.mycard.R;
 import ru.polosatuk.mycard.about.AboutActivity;
 import ru.polosatuk.mycard.newsList.models.NewsDisplayableModel;
-import ru.polosatuk.mycard.newsList.models.NewsItem;
-import ru.polosatuk.mycard.utils.Utils;
+import ru.polosatuk.mycard.utils.DateUtils;
+import ru.polosatuk.mycard.utils.VisabilityUtils;
 
 public class NewsViewActivity extends MvpAppCompatActivity implements NewsView {
 
     private static final int SCREEN_WIDTH_DP = 600;
     private static final int LARGE_SCREEN_WIDTH_DP = 1000;
+    private static final String TAG = "NEWS_VIEW_ACTIVITY";
     @NonNull
     private ProgressBar progressBar;
     @NonNull
@@ -95,7 +95,7 @@ public class NewsViewActivity extends MvpAppCompatActivity implements NewsView {
     private void initRecyclerView(@NonNull RecyclerView recyclerView, @NonNull Context context) {
 
         setLayoutManager(recyclerView, context);
-        adapter = new NewsViewAdapter(this, newsItem -> showNewsDetail(this, newsItem)
+        adapter = new NewsViewAdapter(this, newsItem -> newsViewPresenter.onItemClick(newsItem)
                 );
         recyclerView.setAdapter(adapter);
 
@@ -127,24 +127,25 @@ public class NewsViewActivity extends MvpAppCompatActivity implements NewsView {
         if (adapter != null) {
             adapter.replaceItems(list);
         }
-        progressBar.setVisibility(ProgressBar.GONE);
+        showProgressBar(false);
     }
 
     @Override
     public void showError(Throwable th) {
-        Utils.setVisible(errorView, true);
-        Log.d(NewsViewActivity.class.getSimpleName(), th.getMessage(), th);
+        VisabilityUtils.setVisible(errorView, true);
+        Log.d(TAG, th.getMessage(), th);
     }
 
     @Override
     public void showProgressBar(boolean visability) {
-        Utils.setVisible(progressBar, visability);
-        Utils.setVisible(recyclerView,!visability);
-        Utils.setVisible(errorView, false);
+     VisabilityUtils.setVisible(progressBar, visability);
+     VisabilityUtils.setVisible(recyclerView,!visability);
+     VisabilityUtils.setVisible(errorView, false);
     }
 
     @Override
-    public void showNewsDetail(Context context, NewsDisplayableModel newsItem) {
-        NewsDetailsActivity.start(context, newsItem);
+    public void showNewsDetails(NewsDisplayableModel newsItem) {
+             NewsDetailsActivity.start(this, newsItem);
+
     }
 }

@@ -14,9 +14,9 @@ import static android.text.format.DateUtils.DAY_IN_MILLIS;
 import static android.text.format.DateUtils.FORMAT_ABBREV_RELATIVE;
 import static android.text.format.DateUtils.HOUR_IN_MILLIS;
 
-public class Utils {
+public class DateUtils {
 
-    private Utils() {
+    private DateUtils() {
         throw new IllegalAccessError("No instance");
     }
 
@@ -35,12 +35,7 @@ public class Utils {
         return new GregorianCalendar(year, month, date, hrs, min).getTime();
     }
 
-    public static void setVisible(@Nullable View view, boolean show) {
-        if (view == null) return;
 
-        int visibility = show ? View.VISIBLE : View.GONE;
-        view.setVisibility(visibility);
-    }
 
 
 }

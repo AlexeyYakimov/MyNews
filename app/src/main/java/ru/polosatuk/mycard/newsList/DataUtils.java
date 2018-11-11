@@ -10,7 +10,7 @@ import java.util.Locale;
 import androidx.annotation.NonNull;
 import ru.polosatuk.mycard.newsList.models.NewsCategory;
 import ru.polosatuk.mycard.newsList.models.NewsItem;
-import ru.polosatuk.mycard.utils.Utils;
+import ru.polosatuk.mycard.utils.DateUtils;
 
 
 public class DataUtils {
@@ -38,7 +38,7 @@ public class DataUtils {
                 "Tourist filmed sitting on 5m-long crocodile",
                 "https://e3.365dm.com/18/09/736x414/skynews-crocodile-australia_4433218.jpg",
                 NewsCategory.DARVIN_AWARDS,
-                Utils.createDate(2018, localDate.get(Calendar.MONTH), localDate.get(Calendar.DAY_OF_MONTH), localDate.get(Calendar.HOUR_OF_DAY) - 5, 34),
+                DateUtils.createDate(2018, localDate.get(Calendar.MONTH), localDate.get(Calendar.DAY_OF_MONTH), localDate.get(Calendar.HOUR_OF_DAY) - 5, 34),
                 "\"It was dangerous, I know. It is a scary feeling sitting on something that could kill you in a fraction of a "
                         + "second,\" he says.",
                 "A Danish tourist has admitted he took his life in his hands by sitting on a large crocodile in Australia.\n\n"
@@ -57,7 +57,7 @@ public class DataUtils {
                 "Police warn daredevil cliff jumpers who are 'risking their lives for likes'",
                 "https://e3.365dm.com/18/09/2048x1152/skynews-cliff-jumping-greg-milam_4433647.jpg",
                 NewsCategory.CRIMINAL,
-                Utils.createDate(2018, localDate.get(Calendar.MONTH), localDate.get(Calendar.DAY_OF_MONTH) - 1, 12, 45),
+                DateUtils.createDate(2018, localDate.get(Calendar.MONTH), localDate.get(Calendar.DAY_OF_MONTH) - 1, 12, 45),
                 "Police in Los Angeles say they are spending hundreds of thousands of dollars airlifting cliff jumpers out of "
                         + "dangerous spots.",
                 "Daredevils attempting dangerous cliff dives in a quest for likes has led to an increase in costly helicopter "
@@ -75,7 +75,7 @@ public class DataUtils {
                 "Bear saved after getting his head stuck in milk can",
                 "https://e3.365dm.com/18/09/2048x1152/skynews-bear-minnesota_4419111.jpg",
                 NewsCategory.ANIMALS,
-                Utils.createDate(2018, 10, 9, 14, 4),
+                DateUtils.createDate(2018, 10, 9, 14, 4),
                 "Firefighters used the Jaws of Life to free the young black bear, a tool which is normally used to extricate car"
                         + " accident victims.",
                 "A bear has been freed after getting his head stuck in a milk can.\n\n"
@@ -92,7 +92,7 @@ public class DataUtils {
                 "Nearly $18m of cocaine seized in donated boxes of bananas",
                 "https://e3.365dm.com/18/09/2048x1152/skynews-texas-bananas-drugs_4430760.jpg",
                 NewsCategory.CRIMINAL,
-                Utils.createDate(2018, 10, 9, 4, 4),
+                DateUtils.createDate(2018, 10, 9, 4, 4),
                 "Massive quantities of the drug were found in boxes of fruit that had been donated to the Texas Department of "
                         + "Criminal Justice.",
                 "A huge haul of cocaine was discovered hidden in boxes of bananas donated to the Texas Department of Criminal "
@@ -112,7 +112,7 @@ public class DataUtils {
                 "US government hacker jailed after losing secrets",
                 "https://e3.365dm.com/17/09/736x414/d55722dc4eb37f6959d2e047c14710d586aab99f90aa1e4acfd9f992125294f5_4107038.jpg",
                 NewsCategory.CRIMINAL,
-                Utils.createDate(2018, 10, 8, 12, 45),
+                DateUtils.createDate(2018, 10, 8, 12, 45),
                 "Nghia Hoang Pho, 68, who developed hacking tools for the National Security Agency, illegally stored material "
                         + "on his home computer.",
                 "A man who illegally took home hacking tools from his workplace at the National Security Agency, and then "
@@ -136,7 +136,7 @@ public class DataUtils {
                 "Wet Wet Wet announce Liberty X star Kevin Simm as new frontman",
                 "https://e3.365dm.com/18/09/2048x1152/skynews-wet-wet-wet-kevin-simm_4433314.jpg",
                 NewsCategory.MUSIC,
-                Utils.createDate(2018, 9, 17, 12, 45),
+                DateUtils.createDate(2018, 9, 17, 12, 45),
                 "The Voice 2016 winner says he was \"really taken aback\" by the opportunity after singing the band's songs "
                         + "early in his career.",
                 "The Scottish band, who are best-known for their 1994 cover of The Troggs' 1960s hit Love Is All Around, "
@@ -156,7 +156,7 @@ public class DataUtils {
                 "Bla Bla  Bla announce Liberty X star Kevin Simm as new frontman",
                 "https://e3.365dm.com/18/09/2048x1152/skynews-wet-wet-wet-kevin-simm_4433314.jpg",
                 NewsCategory.MUSIC,
-                Utils.createDate(2018, 9, 17, 12, 45),
+                DateUtils.createDate(2018, 9, 17, 12, 45),
                 "The Voice 2016 winner says he was \"really taken aback\" by the opportunity after singing the band's songs "
                         + "early in his career.",
                 "The Scottish band, who are best-known for their 1994 cover of The Troggs' 1960s hit Love Is All Around, "
