@@ -1,4 +1,4 @@
-package ru.polosatuk.mycard.newsList.converter;
+package ru.polosatuk.mycard.newsList;
 
 import android.util.Log;
 

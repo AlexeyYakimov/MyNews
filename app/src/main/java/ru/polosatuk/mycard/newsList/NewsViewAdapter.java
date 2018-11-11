@@ -1,4 +1,4 @@
-package ru.polosatuk.mycard.newsList.adapters;
+package ru.polosatuk.mycard.newsList;
 
 import android.content.Context;
 import android.util.Log;
@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.RequestManager;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -20,7 +21,7 @@ import ru.polosatuk.mycard.utils.ImageUtils;
 
 public class NewsViewAdapter extends RecyclerView.Adapter<NewsViewAdapter.ViewHolder> {
     @NonNull
-    private final List<NewsDisplayableModel> newsItems;
+    private final List<NewsDisplayableModel> newsItems = new ArrayList();
     @NonNull
     private final RequestManager imageLoader;
     @NonNull
@@ -29,11 +30,9 @@ public class NewsViewAdapter extends RecyclerView.Adapter<NewsViewAdapter.ViewHo
     private LayoutInflater inflater;
 
     public NewsViewAdapter(@NonNull Context context,
-                           @NonNull List<NewsDisplayableModel> newsItems,
                            @NonNull OnItemClickListener listener
     ) {
         this.imageLoader = ImageUtils.getRequestManager(context);
-        this.newsItems = newsItems;
         this.listener = listener;
         this.inflater = LayoutInflater.from(context);
     }
@@ -72,6 +71,13 @@ public class NewsViewAdapter extends RecyclerView.Adapter<NewsViewAdapter.ViewHo
     public int getItemCount() {
         return newsItems.size();
     }
+
+    public void replaceItems(@NonNull List<NewsDisplayableModel> items){
+        newsItems.clear();
+        newsItems.addAll(items);
+        notifyDataSetChanged();
+    }
+
 
     class ViewHolder extends RecyclerView.ViewHolder {
 

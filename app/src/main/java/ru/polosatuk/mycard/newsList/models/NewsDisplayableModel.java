@@ -1,9 +1,11 @@
 package ru.polosatuk.mycard.newsList.models;
 
 
+import java.io.Serializable;
+
 import androidx.annotation.NonNull;
 
-public class NewsDisplayableModel {
+public class NewsDisplayableModel implements Serializable {
     @NonNull
     private final String title;
     @NonNull

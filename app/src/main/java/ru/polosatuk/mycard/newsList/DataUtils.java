@@ -1,9 +1,9 @@
-package ru.polosatuk.mycard.newsList.data;
+package ru.polosatuk.mycard.newsList;
+
+import android.accounts.NetworkErrorException;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Locale;
 
@@ -23,6 +23,16 @@ public class DataUtils {
     @NonNull
     public static List<NewsItem> generateNews() {
 
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        try {
+            throw new NetworkErrorException("Text");
+        } catch (NetworkErrorException e) {
+            e.printStackTrace();
+        }
         List<NewsItem> news = new ArrayList<>();
         news.add(new NewsItem(
                 "Tourist filmed sitting on 5m-long crocodile",

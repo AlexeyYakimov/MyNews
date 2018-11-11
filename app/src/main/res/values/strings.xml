@@ -20,4 +20,6 @@
     <string name="loading_place_holder">Loading...</string>
     <string name="date_view_pattern_hr_ago">%1$s hr. ago %2$s</string>
     <string name="yesterday_date_view_pattern">yesterday %1$s</string>
+    <string name="retry_error_btn">Retry</string>
+    <string name="error_massage">Ooops, try again</string>
 </resources>
