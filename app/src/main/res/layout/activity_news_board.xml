@@ -7,7 +7,7 @@
     android:background="@color/news_board_background"
     tools:context=".newsList.NewsViewActivity">
 
-    <androidx.appcompat.widget.Toolbar
+    <android.support.v7.widget.Toolbar
         android:id="@+id/title_tool_bar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
@@ -20,13 +20,13 @@
         app:title="@string/news_title_text"
         app:titleTextColor="@color/title" />
 
-    <androidx.recyclerview.widget.RecyclerView
+    <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view_news"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/title_tool_bar"
         android:padding="@dimen/padding_4dp"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager" />
+        app:layoutManager="android.support.v7.widget.StaggeredGridLayoutManager" />
 
     <ProgressBar
         android:id="@+id/progressBar"

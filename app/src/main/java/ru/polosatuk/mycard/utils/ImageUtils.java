@@ -1,12 +1,12 @@
 package ru.polosatuk.mycard.utils;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.request.RequestOptions;
 
-import androidx.annotation.NonNull;
 import ru.polosatuk.mycard.R;
 
 public class ImageUtils {

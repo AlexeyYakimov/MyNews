@@ -1,5 +1,7 @@
 package ru.polosatuk.mycard.newsList;
 
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.google.gson.Gson;
@@ -11,8 +13,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import ru.polosatuk.mycard.App;
 import ru.polosatuk.mycard.newsList.models.NewsDisplayableModel;
 import ru.polosatuk.mycard.newsList.models.NewsItem;

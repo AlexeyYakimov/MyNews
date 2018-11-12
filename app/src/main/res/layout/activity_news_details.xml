@@ -7,7 +7,7 @@
     android:background="@color/news_board_background"
     tools:context=".NewsDetailsActivity">
 
-    <androidx.appcompat.widget.Toolbar
+    <android.support.v7.widget.Toolbar
         android:id="@+id/title_tool_bar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"

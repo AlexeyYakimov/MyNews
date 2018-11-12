@@ -2,13 +2,10 @@ package ru.polosatuk.mycard.utils;
 
 
 import android.content.Context;
-import android.view.View;
+import android.support.annotation.NonNull;
 
 import java.util.Date;
 import java.util.GregorianCalendar;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import static android.text.format.DateUtils.DAY_IN_MILLIS;
 import static android.text.format.DateUtils.FORMAT_ABBREV_RELATIVE;

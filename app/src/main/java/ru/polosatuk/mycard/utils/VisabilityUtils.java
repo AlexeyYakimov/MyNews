@@ -1,8 +1,8 @@
 package ru.polosatuk.mycard.utils;
 
+import android.support.annotation.Nullable;
 import android.view.View;
 
-import androidx.annotation.Nullable;
 
 public class VisabilityUtils {
     public static void setVisible(@Nullable View view, boolean show) {

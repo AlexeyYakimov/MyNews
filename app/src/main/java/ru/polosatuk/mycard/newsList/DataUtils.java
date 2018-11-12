@@ -1,13 +1,13 @@
 package ru.polosatuk.mycard.newsList;
 
 import android.accounts.NetworkErrorException;
+import android.support.annotation.NonNull;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
-import androidx.annotation.NonNull;
 import ru.polosatuk.mycard.newsList.models.NewsCategory;
 import ru.polosatuk.mycard.newsList.models.NewsItem;
 import ru.polosatuk.mycard.utils.DateUtils;

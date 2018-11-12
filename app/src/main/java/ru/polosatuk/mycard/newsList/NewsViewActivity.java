@@ -3,6 +3,11 @@ package ru.polosatuk.mycard.newsList;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Menu;
@@ -16,16 +21,11 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 
 import java.util.List;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.StaggeredGridLayoutManager;
+
 import ru.polosatuk.mycard.NewsDetailsActivity;
 import ru.polosatuk.mycard.R;
 import ru.polosatuk.mycard.about.AboutActivity;
 import ru.polosatuk.mycard.newsList.models.NewsDisplayableModel;
-import ru.polosatuk.mycard.utils.DateUtils;
 import ru.polosatuk.mycard.utils.VisabilityUtils;
 
 public class NewsViewActivity extends MvpAppCompatActivity implements NewsView {
@@ -33,15 +33,10 @@ public class NewsViewActivity extends MvpAppCompatActivity implements NewsView {
     private static final int SCREEN_WIDTH_DP = 600;
     private static final int LARGE_SCREEN_WIDTH_DP = 1000;
     private static final String TAG = "NEWS_VIEW_ACTIVITY";
-    @NonNull
     private ProgressBar progressBar;
-    @NonNull
     private NewsViewAdapter adapter;
-    @NonNull
     private RecyclerView recyclerView;
-    @NonNull
     private Button errorBtn;
-    @NonNull
     private View errorView;
 
     @InjectPresenter
@@ -95,8 +90,7 @@ public class NewsViewActivity extends MvpAppCompatActivity implements NewsView {
     private void initRecyclerView(@NonNull RecyclerView recyclerView, @NonNull Context context) {
 
         setLayoutManager(recyclerView, context);
-        adapter = new NewsViewAdapter(this, newsItem -> newsViewPresenter.onItemClick(newsItem)
-                );
+        adapter = new NewsViewAdapter(this, newsItem -> newsViewPresenter.onItemClick(newsItem));
         recyclerView.setAdapter(adapter);
 
         recyclerView.addItemDecoration(new NewsItemDecorator(getResources().getDimensionPixelSize(R.dimen.padding_4dp)));
