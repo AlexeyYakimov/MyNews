@@ -1,4 +1,4 @@
-package ru.polosatuk.mycard.newsList;
+package ru.polosatuk.mycard.screen.newsList;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -16,8 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ru.polosatuk.mycard.R;
-import ru.polosatuk.mycard.newsList.models.NewsDisplayableModel;
-import ru.polosatuk.mycard.utils.ImageUtils;
+import ru.polosatuk.mycard.screen.newsList.models.NewsDisplayableModel;
+import ru.polosatuk.mycard.screen.utils.ImageUtils;
 
 public class NewsViewAdapter extends RecyclerView.Adapter<NewsViewAdapter.ViewHolder> {
     @NonNull
@@ -51,15 +51,9 @@ public class NewsViewAdapter extends RecyclerView.Adapter<NewsViewAdapter.ViewHo
     @Override
     public int getItemViewType(int position) {
         switch (newsItems.get(position).getNewsCategory()) {
-            case MUSIC: {
+            case AUTOMOBILES: {
                 return R.layout.news_card_music;
             }
-            case ANIMALS:
-            case DARVIN_AWARDS:
-            case CRIMINAL: {
-                return R.layout.news_card;
-            }
-
             default: {
                 Log.d("NewsViewAdapter", "No activity to add");
                 return R.layout.news_card;

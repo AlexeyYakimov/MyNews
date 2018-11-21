@@ -1,10 +1,9 @@
-package ru.polosatuk.mycard.newsList.models;
+package ru.polosatuk.mycard.screen.newsList.models;
 
 
 import android.support.annotation.NonNull;
 
 import java.io.Serializable;
-
 
 
 public class NewsDisplayableModel implements Serializable {
@@ -20,19 +19,23 @@ public class NewsDisplayableModel implements Serializable {
     private final String previewText;
     @NonNull
     private final String fullText;
+    @NonNull
+    private final String bigImageUrl;
 
     public NewsDisplayableModel(@NonNull String title,
                                 @NonNull String imageUrl,
                                 @NonNull NewsCategory newsCategory,
                                 @NonNull String publishDate,
                                 @NonNull String previewText,
-                                @NonNull String fullText) {
+                                @NonNull String fullText,
+                                @NonNull String bigImageUrl) {
         this.title = title;
         this.imageUrl = imageUrl;
         this.newsCategory = newsCategory;
         this.publishDate = publishDate;
         this.previewText = previewText;
         this.fullText = fullText;
+        this.bigImageUrl = bigImageUrl;
     }
 
     @NonNull
@@ -64,5 +67,11 @@ public class NewsDisplayableModel implements Serializable {
     public String getFullText() {
         return fullText;
     }
+
+    @NonNull
+    public String getBigImageUrl() {
+        return bigImageUrl;
+    }
+
 
 }

@@ -5,14 +5,14 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".App"
+        android:name=".screen.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
-        <activity android:name=".newsList.NewsViewActivity">
+        <activity android:name=".screen.newsList.NewsViewActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,9 +20,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".about.AboutActivity"
+            android:name=".screen.about.AboutActivity"
             android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".NewsDetailsActivity" />
+        <activity android:name=".screen.NewsDetailsActivity" />
     </application>
 
 </manifest>

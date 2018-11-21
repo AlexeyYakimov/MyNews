@@ -1,4 +1,4 @@
-package ru.polosatuk.mycard;
+package ru.polosatuk.mycard.screen;
 
 import android.app.Application;
 import android.content.Context;
@@ -45,8 +45,9 @@ public class App extends Application {
             }
             Log.w("Undeliverable exception", e);
         });
-    }
 
+
+    }
     public static Context getAppContext() {
         return appContext;
     }

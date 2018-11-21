@@ -20,4 +20,6 @@
     <string name="loading_place_holder">Загрузка...</string>
     <string name="date_view_pattern_hr_ago">%1$s ч. назад %2$s</string>
     <string name="yesterday_date_view_pattern">Вчера %1$s</string>
+    <string name="retry_error_btn">Повторить</string>
+    <string name="error_massage">Кажется, что-то пошло не так</string>
 </resources>

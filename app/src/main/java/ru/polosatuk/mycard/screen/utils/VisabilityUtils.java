@@ -1,4 +1,4 @@
-package ru.polosatuk.mycard.utils;
+package ru.polosatuk.mycard.screen.utils;
 
 import android.support.annotation.Nullable;
 import android.view.View;

@@ -1,4 +1,4 @@
-package ru.polosatuk.mycard.newsList.models;
+package ru.polosatuk.mycard.screen.newsList.models;
 
 import android.support.annotation.NonNull;
 
@@ -7,6 +7,8 @@ import java.util.Date;
 
 
 public class NewsItem {
+//    Он пока не используется но он очень важен для меня как память.
+//    Планирую его запользовать в 6м дз наверное, но если не пригодится удалю
 
     @NonNull
     private final String title;

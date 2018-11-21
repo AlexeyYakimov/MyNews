@@ -1,4 +1,4 @@
-package ru.polosatuk.mycard.utils;
+package ru.polosatuk.mycard.screen.utils;
 
 
 import android.content.Context;
@@ -26,13 +26,5 @@ public class DateUtils {
                 FORMAT_ABBREV_RELATIVE
         );
     }
-
-    @NonNull
-    public static Date createDate(int year, int month, int date, int hrs, int min) {
-        return new GregorianCalendar(year, month, date, hrs, min).getTime();
-    }
-
-
-
 
 }
