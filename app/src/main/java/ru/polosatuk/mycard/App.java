@@ -1,4 +1,4 @@
-package ru.polosatuk.mycard.screen;
+package ru.polosatuk.mycard;
 
 import android.app.Application;
 import android.content.Context;

@@ -10,4 +10,6 @@
     <color name="news_board_background">#c3c4c4c4</color>
     <color name="text_black">#ef000000</color>
     <color name="text_white">#efd7d2d2</color>
+
+    <color name="black_overlay">#66000000</color>
 </resources>

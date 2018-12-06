@@ -4,7 +4,7 @@
     <string name="about_me_header">Обо мне:</string>
     <string name="hint_message">Введите Ваш сообщение</string>
     <string name="send"><u>Отправить</u></string>
-    <string name="name">Алексей Якимов</string>
+    <string name="cv_name">Алексей Якимов</string>
     <string name="work">Тестировщик</string>
     <string name="no_app">Нет подходящего приложения</string>
     <string name="disclaimer">© 2018 Алексей Якимов</string>
@@ -22,4 +22,8 @@
     <string name="yesterday_date_view_pattern">Вчера %1$s</string>
     <string name="retry_error_btn">Повторить</string>
     <string name="error_massage">Кажется, что-то пошло не так</string>
+
+    <string name="home">Домашняя</string>
+    <string name="opinion">Мнение</string>
+    <string name="national">Национальные</string>
 </resources>

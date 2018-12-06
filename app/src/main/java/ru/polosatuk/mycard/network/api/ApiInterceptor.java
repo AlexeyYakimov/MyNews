@@ -12,7 +12,7 @@ final class ApiInterceptor implements Interceptor {
     private String apiKey;
 
     private ApiInterceptor(String apiKey) {
-        this.apiKey=apiKey;
+        this.apiKey = apiKey;
     }
 
     public static Interceptor create(String apiKey) {
@@ -21,18 +21,17 @@ final class ApiInterceptor implements Interceptor {
 
     @Override
     public Response intercept(Chain chain) throws IOException {
-       final Request requestWithOutApiKey = chain.request();
+        final Request requestWithOutApiKey = chain.request();
 
-       final HttpUrl url = requestWithOutApiKey.url()
-               .newBuilder()
-               .addQueryParameter(HEADER_API_PARAM, apiKey)
-               .build();
+        final HttpUrl url = requestWithOutApiKey.url()
+                .newBuilder()
+                .addQueryParameter(HEADER_API_PARAM, apiKey)
+                .build();
         final Request requestWithApiKey = requestWithOutApiKey
                 .newBuilder()
                 .url(url)
                 .build();
-
-
+        
         return chain.proceed(requestWithApiKey);
     }
 }

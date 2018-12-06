@@ -18,14 +18,16 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-import ru.polosatuk.mycard.screen.App;
 import ru.polosatuk.mycard.screen.NewsDetailsActivity;
 import ru.polosatuk.mycard.R;
 import ru.polosatuk.mycard.screen.about.AboutActivity;
@@ -69,22 +71,21 @@ public class NewsViewActivity extends MvpAppCompatActivity implements NewsView {
         initRecyclerView(recyclerView, this);
 
         spinner = findViewById(R.id.title_spinner);
-        spinner.setAdapter(createSpinner());
+        spinner.setAdapter(addListToSpinner(newsViewPresenter.createSpinner()));
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                newsViewPresenter.startLoading(parent.getSelectedItem().toString());
+                newsViewPresenter.onItemClick(parent.getSelectedItem().toString());
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
+                newsViewPresenter.onItemClick(parent.getSelectedItem().toString());
             }
         });
 
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(@NonNull Menu menu) {
@@ -165,10 +166,16 @@ public class NewsViewActivity extends MvpAppCompatActivity implements NewsView {
 
     }
 
-
-    public ArrayAdapter<NewsCategory> createSpinner() {
-        return new ArrayAdapter<>(this,
+    private ArrayAdapter<String> addListToSpinner(HashMap<NewsCategory, String> spinnerList) {
+        List<String> list = new ArrayList<>();
+        list.addAll(spinnerList.values());
+        return new ArrayAdapter<String>(this,
                 R.layout.support_simple_spinner_dropdown_item,
-                newsViewPresenter.spinnerValue);
+                list);
+    }
+
+    @NonNull
+    public static void start(@NonNull Context context) {
+        context.startActivity(new Intent(context, NewsViewActivity.class));
     }
 }

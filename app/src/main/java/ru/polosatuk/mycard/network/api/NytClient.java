@@ -9,10 +9,11 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+import ru.polosatuk.mycard.BuildConfig;
 
 public class NytClient {
     private static final String NYT_BASE_URI = "https://api.nytimes.com/svc/topstories/v2/";
-    private static final int TIMEOUT_IN_SECONDS = 5;
+    private static final int TIMEOUT_IN_SECONDS = 15;
     private static final String API_KEY = ApiKey.getApiKey();
 
     private static NytClient nytClient;
@@ -25,24 +26,32 @@ public class NytClient {
         nytApi = retrofit.create(NytApi.class);
     }
 
-    public static synchronized NytClient getInstance(){
-        if (nytClient == null){
+    public static synchronized NytClient getInstance() {
+        if (nytClient == null) {
             nytClient = new NytClient();
         }
         return nytClient;
     }
 
     private OkHttpClient buildOkhttpClient() {
-        HttpLoggingInterceptor networkLogInterceptor = new HttpLoggingInterceptor();
-        networkLogInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-
-        return new OkHttpClient.Builder()
-                .addInterceptor(networkLogInterceptor)
-                .addInterceptor(ApiInterceptor.create(API_KEY))
-                .connectTimeout(TIMEOUT_IN_SECONDS, TimeUnit.SECONDS)
-                .writeTimeout(TIMEOUT_IN_SECONDS, TimeUnit.SECONDS)
-                .readTimeout(TIMEOUT_IN_SECONDS, TimeUnit.SECONDS)
-                .build();
+        if (BuildConfig.DEBUG) {
+            HttpLoggingInterceptor networkLogInterceptor = new HttpLoggingInterceptor();
+            networkLogInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+            return new OkHttpClient.Builder()
+                    .addInterceptor(ApiInterceptor.create(API_KEY))
+                    .addInterceptor(networkLogInterceptor)
+                    .connectTimeout(TIMEOUT_IN_SECONDS, TimeUnit.SECONDS)
+                    .writeTimeout(TIMEOUT_IN_SECONDS, TimeUnit.SECONDS)
+                    .readTimeout(TIMEOUT_IN_SECONDS, TimeUnit.SECONDS)
+                    .build();
+        } else {
+            return new OkHttpClient.Builder()
+                    .addInterceptor(ApiInterceptor.create(API_KEY))
+                    .connectTimeout(TIMEOUT_IN_SECONDS, TimeUnit.SECONDS)
+                    .writeTimeout(TIMEOUT_IN_SECONDS, TimeUnit.SECONDS)
+                    .readTimeout(TIMEOUT_IN_SECONDS, TimeUnit.SECONDS)
+                    .build();
+        }
     }
 
     private Retrofit buildRetrofit(OkHttpClient okHttpClient) {
@@ -54,7 +63,7 @@ public class NytClient {
                 .build();
     }
 
-    public NytApi getNews(){
+    public NytApi getNews() {
         return nytApi;
     }
 

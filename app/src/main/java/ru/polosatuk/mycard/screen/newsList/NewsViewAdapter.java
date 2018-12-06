@@ -51,8 +51,8 @@ public class NewsViewAdapter extends RecyclerView.Adapter<NewsViewAdapter.ViewHo
     @Override
     public int getItemViewType(int position) {
         switch (newsItems.get(position).getNewsCategory()) {
-            case AUTOMOBILES: {
-                return R.layout.news_card_music;
+            case magazine: {
+                return R.layout.news_card_magazine;
             }
             default: {
                 Log.d("NewsViewAdapter", "No activity to add");
@@ -66,7 +66,7 @@ public class NewsViewAdapter extends RecyclerView.Adapter<NewsViewAdapter.ViewHo
         return newsItems.size();
     }
 
-    public void replaceItems(@NonNull List<NewsDisplayableModel> items){
+    public void replaceItems(@NonNull List<NewsDisplayableModel> items) {
         newsItems.clear();
         newsItems.addAll(items);
         notifyDataSetChanged();
@@ -104,7 +104,7 @@ public class NewsViewAdapter extends RecyclerView.Adapter<NewsViewAdapter.ViewHo
         }
 
         private void bind(@NonNull NewsDisplayableModel newsItem) {
-            category.setText(newsItem.getNewsCategory().getName());
+            category.setText(newsItem.getNewsSubCategory());
             title.setText(newsItem.getPreviewText());
             previewText.setText(newsItem.getPreviewText());
             date.setText(newsItem.getPublishDate());

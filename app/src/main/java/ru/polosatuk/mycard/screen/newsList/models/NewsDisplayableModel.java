@@ -12,30 +12,35 @@ public class NewsDisplayableModel implements Serializable {
     @NonNull
     private final String imageUrl;
     @NonNull
-    private final NewsCategory newsCategory;
+    private final String newsSubCategory;
     @NonNull
     private final String publishDate;
     @NonNull
+    private final NewsCategory newsCategory;
+    @NonNull
     private final String previewText;
     @NonNull
-    private final String fullText;
+    private final String url;
+
     @NonNull
-    private final String bigImageUrl;
+    public NewsCategory getNewsCategory() {
+        return newsCategory;
+    }
 
     public NewsDisplayableModel(@NonNull String title,
                                 @NonNull String imageUrl,
+                                @NonNull String newsSubCategory,
                                 @NonNull NewsCategory newsCategory,
                                 @NonNull String publishDate,
                                 @NonNull String previewText,
-                                @NonNull String fullText,
-                                @NonNull String bigImageUrl) {
+                                @NonNull String url) {
         this.title = title;
         this.imageUrl = imageUrl;
+        this.newsSubCategory = newsSubCategory;
         this.newsCategory = newsCategory;
         this.publishDate = publishDate;
         this.previewText = previewText;
-        this.fullText = fullText;
-        this.bigImageUrl = bigImageUrl;
+        this.url = url;
     }
 
     @NonNull
@@ -49,8 +54,8 @@ public class NewsDisplayableModel implements Serializable {
     }
 
     @NonNull
-    public NewsCategory getNewsCategory() {
-        return newsCategory;
+    public String getNewsSubCategory() {
+        return newsSubCategory;
     }
 
     @NonNull
@@ -64,13 +69,8 @@ public class NewsDisplayableModel implements Serializable {
     }
 
     @NonNull
-    public String getFullText() {
-        return fullText;
-    }
-
-    @NonNull
-    public String getBigImageUrl() {
-        return bigImageUrl;
+    public String getUrl() {
+        return url;
     }
 
 

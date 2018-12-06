@@ -63,8 +63,8 @@
 
         <ImageView
             android:id="@+id/news_card_image"
-            android:layout_width="@dimen/news_preview_image_size"
-            android:layout_height="@dimen/news_preview_image_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_above="@id/news_card_date"
             android:layout_alignParentEnd="true"
             android:contentDescription="TODO" android:scaleType="centerCrop"

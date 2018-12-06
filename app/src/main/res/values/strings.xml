@@ -4,7 +4,7 @@
     <string name="about_me_header">About:</string>
     <string name="hint_message">Enter you message</string>
     <string name="send"><u>Send</u></string>
-    <string name="name">Alexey Yakimov</string>
+    <string name="cv_name">Alexey Yakimov</string>
     <string name="work">QA</string>
     <string name="no_app">No app for open link</string>
     <string name="disclaimer">© 2018 Alexey Yakimov</string>
@@ -22,4 +22,8 @@
     <string name="yesterday_date_view_pattern">yesterday %1$s</string>
     <string name="retry_error_btn">Retry</string>
     <string name="error_massage">Ooops, try again</string>
+
+    <string name="home">home</string>
+    <string name="opinion">opinion</string>
+    <string name="national">national</string>
 </resources>

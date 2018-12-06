@@ -1,40 +1,36 @@
 package ru.polosatuk.mycard.screen.newsList.models;
 
+import java.util.List;
+
 public enum NewsCategory {
-    HOME("home"),
-    OPINION("opinion"),
-    NATIONAL("national"),
-    POLITICS("politics"),
-    UPSHOT("upshot"),
-    NYREGION("nyregion"),
-    BUISNESS("business"),
-    TECHNOLOGY("technology"),
-    SCIENCE("science"),
-    HEALTH("health"),
-    SPORTS("sports"),
-    BOOKS("books"),
-    MOVIES("movies"),
-    THEATER("theater"),
-    SUNDAYREVIEW("sundayreview"),
-    FASHION("fashion"),
-    TMAGAZINE("tmagazine"),
-    FOOD("food"),
-    TRAVEL("travel"),
-    MAGAZINE("magazine"),
-    REALESTATE("realestate"),
-    AUTOMOBILES("automobiles"),
-    OBITUARIES("obituaries"),
-    INSIDER("insider"),
-    ARTS("arts");
-    private final String name;
 
-    NewsCategory(String name) {
-        this.name = name;
-    }
+    home,
+    opinion,
+    national,
+    politics,
+    upshot,
+    nyregion,
+    business,
+    technology,
+    science,
+    health,
+    sports,
+    books,
+    movies,
+    theater,
+    sundayreview,
+    fashion,
+    tmagazine,
+    food,
+    travel,
+    magazine,
+    realestate,
+    automobiles,
+    obituaries,
+    insider,
+    arts;
 
-    public String getName() {
-        return name;
-    }
+
 }
 
 
