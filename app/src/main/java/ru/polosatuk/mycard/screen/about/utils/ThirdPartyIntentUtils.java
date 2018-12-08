@@ -1,4 +1,4 @@
-package ru.polosatuk.mycard.about.utils;
+package ru.polosatuk.mycard.screen.about.utils;
 
 import android.content.Context;
 import android.content.Intent;

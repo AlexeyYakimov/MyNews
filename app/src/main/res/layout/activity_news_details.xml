@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/news_board_background"
-    tools:context=".NewsDetailsActivity">
+    tools:context=".screen.NewsDetailsActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/title_tool_bar"
@@ -18,57 +18,13 @@
         app:title="@string/loading_place_holder"
         app:titleTextColor="@color/title" />
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/title_tool_bar">
 
-        <RelativeLayout
+
+        <WebView
+            android:id="@+id/webview"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@id/title_tool_bar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:id="@+id/news_details_image"
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:contentDescription="@string/description_photo"
-                android:scaleType="centerCrop" />
-
-
-            <TextView
-                android:id="@+id/news_details_title"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/news_details_image"
-                android:maxLines="4"
-                android:minLines="2"
-                android:paddingStart="@dimen/name_padding"
-                android:paddingEnd="@dimen/padding_4dp"
-                android:text="@string/loading_place_holder"
-                android:textColor="@color/text_black"
-                android:textSize="@dimen/header_text"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/news_details_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/news_details_title"
-                android:paddingStart="@dimen/padding_8dp"
-                android:paddingEnd="@dimen/padding_4dp"
-                android:text="@string/loading_place_holder" />
-
-            <TextView
-                android:id="@+id/news_details_full_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/news_details_date"
-                android:paddingStart="@dimen/padding_8dp"
-                android:paddingTop="@dimen/padding_4dp"
-                android:paddingEnd="@dimen/padding_4dp"
-                android:text="@string/loading_place_holder"
-                android:textSize="@dimen/main_text_size" />
-
-        </RelativeLayout>
-    </ScrollView>
+            android:layout_height="match_parent"
+            />
 </RelativeLayout>

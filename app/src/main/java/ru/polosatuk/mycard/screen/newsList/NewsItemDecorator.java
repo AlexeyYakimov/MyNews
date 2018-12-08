@@ -1,4 +1,4 @@
-package ru.polosatuk.mycard.newsList;
+package ru.polosatuk.mycard.screen.newsList;
 
 import android.graphics.Rect;
 import android.support.annotation.NonNull;

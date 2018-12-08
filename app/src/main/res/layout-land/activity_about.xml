@@ -6,9 +6,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_background"
-    tools:context=".about.AboutActivity">
+    tools:context=".screen.about.AboutActivity">
 
-    <androidx.appcompat.widget.Toolbar
+    <android.support.v7.widget.Toolbar
         android:id="@+id/title_tool_bar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
@@ -16,7 +16,7 @@
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"
-        app:title="@string/name"
+        app:title="@string/cv_name"
         app:titleTextColor="@color/title" />
 
     <LinearLayout

@@ -45,8 +45,9 @@ public class App extends Application {
             }
             Log.w("Undeliverable exception", e);
         });
-    }
 
+
+    }
     public static Context getAppContext() {
         return appContext;
     }

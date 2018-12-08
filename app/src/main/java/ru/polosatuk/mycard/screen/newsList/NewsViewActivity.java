@@ -1,4 +1,4 @@
-package ru.polosatuk.mycard.newsList;
+package ru.polosatuk.mycard.screen.newsList;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,20 +13,27 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-
-import ru.polosatuk.mycard.NewsDetailsActivity;
+import ru.polosatuk.mycard.screen.NewsDetailsActivity;
 import ru.polosatuk.mycard.R;
-import ru.polosatuk.mycard.about.AboutActivity;
-import ru.polosatuk.mycard.newsList.models.NewsDisplayableModel;
-import ru.polosatuk.mycard.utils.VisabilityUtils;
+import ru.polosatuk.mycard.screen.about.AboutActivity;
+import ru.polosatuk.mycard.screen.newsList.models.NewsCategory;
+import ru.polosatuk.mycard.screen.newsList.models.NewsDisplayableModel;
+import ru.polosatuk.mycard.screen.utils.VisabilityUtils;
 
 public class NewsViewActivity extends MvpAppCompatActivity implements NewsView {
 
@@ -38,6 +45,7 @@ public class NewsViewActivity extends MvpAppCompatActivity implements NewsView {
     private RecyclerView recyclerView;
     private Button errorBtn;
     private View errorView;
+    private Spinner spinner;
 
     @InjectPresenter
     NewsViewPresenter newsViewPresenter;
@@ -51,7 +59,7 @@ public class NewsViewActivity extends MvpAppCompatActivity implements NewsView {
         progressBar = findViewById(R.id.progressBar);
 
         errorBtn = findViewById(R.id.error_content_btn_retry);
-        errorBtn.setOnClickListener(onClick ->{
+        errorBtn.setOnClickListener(onClick -> {
             newsViewPresenter.onRetryBtnClick();
         });
         errorView = findViewById(R.id.error_content);
@@ -59,9 +67,23 @@ public class NewsViewActivity extends MvpAppCompatActivity implements NewsView {
         Toolbar myToolbar = findViewById(R.id.title_tool_bar);
         setSupportActionBar(myToolbar);
 
-         recyclerView = findViewById(R.id.recycler_view_news);
+        recyclerView = findViewById(R.id.recycler_view_news);
         initRecyclerView(recyclerView, this);
 
+        spinner = findViewById(R.id.title_spinner);
+        spinner.setAdapter(addListToSpinner(newsViewPresenter.createSpinner()));
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                newsViewPresenter.onItemClick(parent.getSelectedItem().toString());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                newsViewPresenter.onItemClick(parent.getSelectedItem().toString());
+            }
+        });
 
     }
 
@@ -127,19 +149,33 @@ public class NewsViewActivity extends MvpAppCompatActivity implements NewsView {
     @Override
     public void showError(Throwable th) {
         VisabilityUtils.setVisible(errorView, true);
+        VisabilityUtils.setVisible(progressBar, false);
         Log.d(TAG, th.getMessage(), th);
     }
 
     @Override
     public void showProgressBar(boolean visability) {
-     VisabilityUtils.setVisible(progressBar, visability);
-     VisabilityUtils.setVisible(recyclerView,!visability);
-     VisabilityUtils.setVisible(errorView, false);
+        VisabilityUtils.setVisible(progressBar, visability);
+        VisabilityUtils.setVisible(recyclerView, !visability);
+        VisabilityUtils.setVisible(errorView, false);
     }
 
     @Override
     public void showNewsDetails(NewsDisplayableModel newsItem) {
-             NewsDetailsActivity.start(this, newsItem);
+        NewsDetailsActivity.start(this, newsItem);
 
+    }
+
+    private ArrayAdapter<String> addListToSpinner(HashMap<NewsCategory, String> spinnerList) {
+        List<String> list = new ArrayList<>();
+        list.addAll(spinnerList.values());
+        return new ArrayAdapter<String>(this,
+                R.layout.support_simple_spinner_dropdown_item,
+                list);
+    }
+
+    @NonNull
+    public static void start(@NonNull Context context) {
+        context.startActivity(new Intent(context, NewsViewActivity.class));
     }
 }

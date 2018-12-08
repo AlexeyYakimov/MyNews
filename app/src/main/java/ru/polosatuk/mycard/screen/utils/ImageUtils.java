@@ -1,4 +1,4 @@
-package ru.polosatuk.mycard.utils;
+package ru.polosatuk.mycard.screen.utils;
 
 import android.content.Context;
 import android.support.annotation.NonNull;

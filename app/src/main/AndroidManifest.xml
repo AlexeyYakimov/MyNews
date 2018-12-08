@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="ru.polosatuk.mycard">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -11,18 +12,19 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
-        <activity android:name=".newsList.NewsViewActivity">
+        android:theme="@style/Theme.AppCompat.NoActionBar"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".screen.newsList.NewsViewActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
+                  </activity>
         <activity
-            android:name=".about.AboutActivity"
+            android:name=".screen.about.AboutActivity"
             android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".NewsDetailsActivity" />
+        <activity android:name=".screen.NewsDetailsActivity" />
     </application>
 
 </manifest>

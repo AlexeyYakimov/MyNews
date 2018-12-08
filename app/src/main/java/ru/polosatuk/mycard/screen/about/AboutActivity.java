@@ -1,4 +1,4 @@
-package ru.polosatuk.mycard.about;
+package ru.polosatuk.mycard.screen.about;
 
 import android.content.Context;
 import android.content.Intent;
@@ -17,7 +17,7 @@ import android.widget.TextView;
 
 
 import ru.polosatuk.mycard.R;
-import ru.polosatuk.mycard.about.utils.ThirdPartyIntentUtils;
+import ru.polosatuk.mycard.screen.about.utils.ThirdPartyIntentUtils;
 
 
 public class AboutActivity extends AppCompatActivity implements View.OnClickListener {
